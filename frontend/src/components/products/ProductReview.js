@@ -1,16 +1,27 @@
+import ReactStars from "react-rating-stars-component";
+
 export default function ProductReview({ reviews }) {
   return (
-    <div class="bg-neutral-200 bg-opacity-70 px-5">
+    <div className="bg-neutral-200 bg-opacity-70 px-5">
       <hr />
       {reviews &&
         reviews.map((review) => (
           <div key={review._id} class="my-4 flex">
             <div className="w-full">
-              <div>
-                <p className="text-lg font-semibold">{review.user.name}</p>
+              <div className="flex items-center gap-2">
+                <p className="text-lg font-semibold capitalize">
+                  {review.user.name}
+                </p>
+                <ReactStars
+                  size={18}
+                  value={review.rating}
+                  activeColor={"#FF9529"}
+                  isHalf
+                  edit={false}
+                />
               </div>
               <div className="py-4">
-                <p className="">{review.comment}</p>
+                <p className="capitalize">{review.comment}</p>
               </div>
             </div>
             <div className="min-w-[10%] text-gray-600 font-semibold">

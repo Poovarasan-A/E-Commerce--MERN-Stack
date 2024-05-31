@@ -77,7 +77,7 @@ const OrderDetails = () => {
                     <div className="row my-5" key={index}>
                       <div className="col-4 col-lg-2">
                         <img
-                          src={item.image}
+                          src={item.file}
                           alt={item.name}
                           height="45"
                           width="65"

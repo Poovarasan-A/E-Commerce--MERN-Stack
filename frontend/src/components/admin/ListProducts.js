@@ -10,7 +10,7 @@ import {
 import toast from "react-hot-toast";
 import { MdDeleteOutline } from "react-icons/md";
 import { TbFilePencil } from "react-icons/tb";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ListProducts = () => {
   const {
@@ -22,6 +22,7 @@ const ListProducts = () => {
     (state) => state.productState
   );
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const deleteHandler = (e, id) => {
     e.target.disabled = true;
@@ -43,11 +44,12 @@ const ListProducts = () => {
         position: "top-center",
         onOpen: () => dispatch(clearProductDeleted()),
       });
+      navigate("/admin/products");
       return;
     }
 
     dispatch(getAdminProducts);
-  }, [dispatch, error, isProductDeleted, productError]);
+  }, [dispatch, error, isProductDeleted, productError, navigate]);
 
   return (
     <div className="w-full h-full flex justify-center items-center bg-neutral-200 bg-opacity-60">
@@ -86,19 +88,21 @@ const ListProducts = () => {
                   : "";
               return (
                 <div
-                  className="w-full flex items-center mt-2 gap-1 px-4 bg-white"
+                  className="w-full h-[4rem] flex items-center mt-2 gap-1 px-4 bg-white"
                   key={index}
                 >
                   <div className="w-[5%]">
                     <h2>{index + 1}</h2>
                   </div>
                   <div className="w-[15%]">
-                    <img
-                      width={80}
-                      height={80}
-                      src={productImage}
-                      alt={product.name}
-                    />
+                    <div className="w-[3rem] h-[3rem] flex items-center justify-center">
+                      <img
+                        width={80}
+                        height={80}
+                        src={productImage}
+                        alt={product.name}
+                      />
+                    </div>
                   </div>
                   <div className="w-[25%] font-semibold">
                     <h2>{product.name}</h2>

@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { addReview, getSingleProduct } from "../../actions/productAction";
 import { useParams } from "react-router-dom";
 import Loader from "../layouts/Loader";
-import StarRating from "../layouts/StarRating";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import "../../App.css";
 import MetaData from "../layouts/MetaData";
 import toast from "react-hot-toast";
+import ReactStars from "react-rating-stars-component";
 
 import { addCartItem } from "../../actions/cartActions";
 import {
@@ -21,6 +21,7 @@ import ProductReview from "./ProductReview";
 const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const [comment, setComment] = useState("");
+  const [rating, setRating] = useState(0);
 
   const {
     product = {},
@@ -39,10 +40,15 @@ const ProductDetails = () => {
     setQuantity(quantity + 1);
   };
 
-  const reviewHandler = () => {
+  const handleRatingChange = (newRating) => {
+    setRating(newRating);
+  };
+  const reviewHandler = (e) => {
+    e.preventDefault();
     const formData = new FormData();
     formData.append("comment", comment);
     formData.append("productId", id);
+    formData.append("rating", rating);
     dispatch(addReview(formData));
   };
 
@@ -58,8 +64,9 @@ const ProductDetails = () => {
         position: "top-center",
         onOpen: () => dispatch(clearProductErr()),
       });
+      return;
     }
-  }, [isReviewSubmitted, error, dispatch]);
+  }, [isReviewSubmitted, error, dispatch, product]);
 
   useEffect(() => {
     dispatch(getSingleProduct(id));
@@ -75,32 +82,43 @@ const ProductDetails = () => {
   return (
     <Fragment>
       <MetaData title={product.name} />
+
       <div className="w-full h-screen lg:flex pt-[4rem] bg-white">
-        <div className="w-full lg:w-[40%] flex items-centerbg-neutral-200 bg-opacity-70 justify-center">
-          <Carousel className="w-[31rem] flex flex-col">
-            {product.images &&
-              product.images.map((image) => (
-                <div key={image._id}>
-                  <img src={image.image} alt="product" />
+        <div className="w-full lg:w-[40%] flex items-centerbg-neutral-200 bg-opacity-70 justify-center ">
+          <Carousel className="w-[31rem] flex flex-col pt-[2rem]" dynamicHeight>
+            {product.files &&
+              product.files.map((file) => (
+                <div key={file._id}>
+                  <img
+                    src={`http://localhost:8000/images/${file.fileName}`}
+                    alt="product"
+                  />
                 </div>
               ))}
           </Carousel>
         </div>
+
         <div className="w-full lg:w-[42%] bg-white px-10 pt-8">
           <h5 className="text-3xl font-bold my-5">{product.name}</h5>
           <p className="text-md">{product.description}</p>
           <p className="text-2xl font-semibold my-5">Rs.{product.price}</p>
           <div className="flex items-center gap-3">
-            <StarRating />({product.ratings})
-            <p>{product.numOfReviews} Reviews</p>
+            <ReactStars
+              size={24}
+              value={product.ratings}
+              activeColor={"#FF9529"}
+              isHalf
+              edit={false}
+            />{" "}
+            ({product.ratings})<p>{product.numOfReviews} Reviews</p>
           </div>
-          <p className="text-lg mt-5 mb-3">Color</p>
+          {/* <p className="text-lg mt-5 mb-3">Color</p>
           <div className="flex gap-4">
             <div className="w-[2rem] h-[2rem] rounded-full bg-teal-500 cursor-pointer hover:border-2 border-slate-800"></div>
             <div className="w-[2rem] h-[2rem] rounded-full bg-rose-500 cursor-pointer hover:border-2 border-slate-800"></div>
             <div className="w-[2rem] h-[2rem] rounded-full bg-blue-500 cursor-pointer hover:border-2 border-slate-800"></div>
             <div className="w-[2rem] h-[2rem] rounded-full bg-gray-500 cursor-pointer hover:border-2 border-slate-800"></div>
-          </div>
+          </div> */}
           <div className="pt-5">
             <div className="w-[6rem] flex border-2 border-slate-800">
               <button
@@ -186,6 +204,15 @@ const ProductDetails = () => {
         )}
         <div className="">
           <div className=" w-full px-32 flex flex-col">
+            <div>
+              <ReactStars
+                size={30}
+                value={rating}
+                onChange={handleRatingChange}
+                activeColor={"#FF9529"}
+                edit={true}
+              />
+            </div>
             <div className="py-5">
               <textarea
                 onChange={(e) => setComment(e.target.value)}

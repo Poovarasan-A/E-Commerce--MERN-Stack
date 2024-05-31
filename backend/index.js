@@ -24,7 +24,7 @@ const corsOptions = {
 app.use("/images", express.static("backend/images"));
 app.use(cors(corsOptions));
 
-dotenv.config({ path: "backend/.env" });
+dotenv.config({ path: path.join(__dirname, "config/.env") });
 
 app.use(express.json());
 app.use(cookieParser());

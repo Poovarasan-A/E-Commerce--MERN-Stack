@@ -55,3 +55,9 @@ input[type="number"]::-webkit-outer-spin-button {
 button {
   cursor: pointer;
 }
+
+/* .carousel .slide img {
+  object-fit: contain;
+  height: 100%; 
+  width: 100%;
+} */
