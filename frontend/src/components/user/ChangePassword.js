@@ -34,7 +34,7 @@ const ChangePassword = () => {
     }
     if (error) {
       toast.error(error, {
-        position: "bottom-right",
+        position: "top-center",
       });
       return;
     }

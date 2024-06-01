@@ -38,6 +38,7 @@ const UserUpdate = () => {
         position: "top-center",
         onOpen: () => dispatch(clearUserUpdated()),
       });
+      dispatch(clearUserUpdated());
       navigate("/admin/users");
     } else if (error) {
       toast.error(error, {

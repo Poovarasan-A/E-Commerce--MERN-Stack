@@ -118,7 +118,7 @@ const Navbar = () => {
       )}
       {/* profile */}
       {isAuthenticated ? (
-        <div className="hidden lg:flex items-center h-full w-[6rem] gap-1 relative cursor-pointer">
+        <div className="hidden lg:flex items-center h-full w-[8rem] gap-1 relative cursor-pointer">
           <div className="w-[2.5rem] h-[2.5rem] rounded-full hover:border-2 border-white">
             <img className="rounded-full" src={avatar} alt="user" />
           </div>
@@ -132,17 +132,6 @@ const Navbar = () => {
               className="text-xl hover:text-2xl"
               onClick={profileHandler}
             />
-          )}
-          {user.role === "admin" && (
-            <div
-              className="flex justify-center items-center font-semibold hover:text-white"
-              onClick={() => {
-                navigate("/admin/dashboard");
-                profileHandler();
-              }}
-            >
-              <MdDashboard className="text-3xl" />
-            </div>
           )}
 
           {open ? (
@@ -169,6 +158,17 @@ const Navbar = () => {
             </div>
           ) : (
             ""
+          )}
+          {user.role === "admin" && (
+            <div
+              className="flex justify-center items-center font-semibold hover:text-white pl-6"
+              onClick={() => {
+                navigate("/admin/dashboard");
+                profileHandler();
+              }}
+            >
+              <MdDashboard className="text-3xl" />
+            </div>
           )}
         </div>
       ) : (

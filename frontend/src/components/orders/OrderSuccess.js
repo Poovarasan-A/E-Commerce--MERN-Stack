@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const OrderSuccess = () => {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
+      <img src="/images/success.png" alt="success" />
       Order Successfully Placed.
       <Link to="/myorders"> Go to Orders</Link>
       <div className="w-full text-center text-blue-700 py-10 cursor-pointer">

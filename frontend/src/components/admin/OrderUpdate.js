@@ -39,6 +39,7 @@ const OrderUpdate = () => {
         onOpen: () => dispatch(clearOrderUpdated()),
       });
       navigate("/admin/orders");
+      dispatch(clearOrderUpdated());
       return;
     }
 
@@ -147,7 +148,7 @@ const OrderUpdate = () => {
                         <div className="flex w-full   gap-6">
                           <div>
                             <img
-                              src={item.image}
+                              src={item.file}
                               alt={item.name}
                               height="100"
                               width="100"

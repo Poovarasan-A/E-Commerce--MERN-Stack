@@ -11,10 +11,11 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 import { completeOrder } from "../../slices/cartSlice";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { validateShipping } from "./ShippingDetails";
 import { clearOrderError } from "../../slices/orderSlice";
 import { createOrder } from "../../actions/orderAction";
+import Loader from "../layouts/Loader";
 
 const ProductPayment = () => {
   const { items: cartItems, shippingInfo = {} } = useSelector(
@@ -28,6 +29,9 @@ const ProductPayment = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInformation"));
+
+  const [loading, setLoading] = useState(false);
+
   const paymentData = {
     amount: Math.round(orderInfo.totalCost * 100),
     shipping: {
@@ -58,6 +62,7 @@ const ProductPayment = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
     document.querySelector("#pay_btn").disabled = true;
     try {
       const { data } = await axios.post("/api/v1/payment/process", paymentData);
@@ -101,6 +106,8 @@ const ProductPayment = () => {
         position: "top-center",
       });
       document.querySelector("#pay_btn").disabled = false;
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -229,6 +236,13 @@ const ProductPayment = () => {
                 Pay - {`Rs.${orderInfo && orderInfo.totalCost}`}
               </button>
             </form>
+
+            {loading && (
+              <div className="flex justify-center items-center mt-4">
+                <Loader />
+              </div>
+            )}
+
             <hr />
             {/* cod */}
             <div className="w-full h-[8rem] rounded-lg border-2 border-gray-400 my-4 p-6">

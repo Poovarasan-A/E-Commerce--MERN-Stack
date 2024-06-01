@@ -19,14 +19,14 @@ const ForgotPassword = () => {
   useEffect(() => {
     if (message) {
       toast.success("Email sent Successfully", {
-        position: "bottom-right",
+        position: "top-center",
       });
       setEmail("");
       return;
     }
     if (error) {
       toast.error(error, {
-        position: "bottom-right",
+        position: "top-center",
       });
       return;
     }

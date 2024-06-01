@@ -69,6 +69,10 @@ const forgotPassword = async (req, res, next) => {
   const resetToken = user.getResetToken();
   await user.save({ validateBeforeSave: false });
 
+  let BASE_URL = process.env.FRONTEND_URL;
+  if (process.env.NODE_ENV === "production") {
+    BASE_URL = `${req.protocol}://${req.get("host")}`;
+  }
   const resetUrl = `${BASE_URL}/password/reset/${resetToken}`;
 
   const message = `Your password reset link as follows \n\n ${resetUrl} \n\n If you have not requested this, then ignore this email`;

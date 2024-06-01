@@ -73,6 +73,7 @@ const ProductUpdate = () => {
         position: "top-center",
         onOpen: () => dispatch(clearProductUpdated()),
       });
+      dispatch(clearProductUpdated());
       navigate("/admin/products");
       return;
     }
@@ -130,7 +131,7 @@ const ProductUpdate = () => {
                   <textarea
                     type="text"
                     id="productDesc"
-                    className="border-2 px-2 py-1 resize-none  border-gray-500 rounded-sm"
+                    className="border-2 px-2 py-1 h-[8rem] resize-none  border-gray-500 rounded-sm"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                   />
@@ -157,7 +158,7 @@ const ProductUpdate = () => {
                 </div>
                 <div className="flex flex-col gap-2 pt-2">
                   <label htmlFor="stock" className="text-gray-400">
-                    Quantity
+                    Stock
                   </label>
                   <input
                     className="border-2 px-2 py-2 w-full  border-gray-500 rounded-sm"

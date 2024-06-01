@@ -23,7 +23,11 @@ const Login = () => {
       toast.success(`Welcome ${user.name} !`, {
         position: "top-center",
       });
-      navigate("/");
+      if (user.role === "admin") {
+        navigate("/admin/dashboard");
+      } else if (user.role === "user") {
+        navigate("/");
+      }
     }
     if (error) {
       toast.error(error, {

@@ -171,7 +171,7 @@ const ProductDetails = () => {
             </div>
           </div>
           <div className="my-5 flex gap-8">
-            <button
+            {/* <button
               className={`w-[8rem] h-[3rem] border-4 cursor-pointer ${
                 product.stock === 0
                   ? "border-gray-400 text-gray-400"
@@ -181,7 +181,7 @@ const ProductDetails = () => {
               disabled={product.stock === 0}
             >
               Buy Now
-            </button>
+            </button> */}
             <button
               className={`w-[8rem] h-[3rem] bg-black text-white cursor-pointer mb-5 ${
                 product.stock === 0
@@ -190,10 +190,15 @@ const ProductDetails = () => {
               }`}
               disabled={product.stock === 0}
               onClick={() => {
-                dispatch(addCartItem(product._id, quantity));
-                toast.success("Item Added to Cart!", {
-                  position: "bottom-right",
-                });
+                user
+                  ? dispatch(addCartItem(product._id, quantity))(
+                      toast.success("Item Added to Cart!", {
+                        position: "top-center",
+                      })
+                    )
+                  : toast.error("Please login to add cart", {
+                      position: "top-center",
+                    });
               }}
             >
               Add to Cart
