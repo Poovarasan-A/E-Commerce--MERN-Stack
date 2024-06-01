@@ -2,9 +2,7 @@ import Stripe from "stripe";
 import dotenv from "dotenv";
 dotenv.config({ path: "../.env" });
 
-const stripe = new Stripe(
-  "sk_test_51PKGm6SBQ5236QscoOmwQ83fAupnDFbcZbVcT4davgrnrxYxnBWhUCemmAsin61fowk1qYzWmHEr78HZlAFw5Trr004VrNLKLv"
-);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export const paymentController = async (req, res, next) => {
   try {
@@ -28,8 +26,7 @@ export const paymentController = async (req, res, next) => {
 export const sendStripeApi = async (req, res, next) => {
   try {
     res.status(200).json({
-      stripeApiKey:
-        "pk_test_51PKGm6SBQ5236Qsc4OVk0Z0I5B8O7P9a95lWhKj0zh7uTgx4RepSR0Q9J0yZjUT1kxHZ7PM9L7KPR1mIx4Tj109m00Felhmd3x",
+      stripeApiKey: process.env.STRIPE_API_KEY,
     });
   } catch (error) {
     next(error);

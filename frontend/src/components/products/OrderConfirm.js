@@ -70,7 +70,7 @@ const OrderConfirm = () => {
                 <div className="w-full flex justify-between py-6">
                   <div className="w-[40%] flex gap-4">
                     <img
-                      src={`http://localhost:8000/images/${item.file}`}
+                      src={`http://localhost:8001/images/${item.file}`}
                       className="border-2 border-gray-400"
                       width={100}
                       height={100}

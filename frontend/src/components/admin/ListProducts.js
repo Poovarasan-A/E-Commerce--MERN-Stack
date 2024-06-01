@@ -84,7 +84,7 @@ const ListProducts = () => {
             {products.map((product, index) => {
               const productImage =
                 product.files.length > 0
-                  ? `http://localhost:8000/images/${product.files[0].fileName}`
+                  ? `http://localhost:8001/images/${product.files[0].fileName}`
                   : "";
               return (
                 <div

@@ -17,12 +17,12 @@ const MyProfile = () => {
       setName(user.name);
       setEmail(user.email);
       if (user.files && user.files[0] && user.files[0].fileName) {
-        setAvatar(`http://localhost:8000/images/${user.files[0].fileName}`);
+        setAvatar(`http://localhost:8001/images/${user.files[0].fileName}`);
       } else {
         setAvatar("/images/default_avatar.png");
       }
     }
-  }, [user]);     
+  }, [user]);
 
   if (loading) {
     return <Loader />;

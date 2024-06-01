@@ -52,7 +52,7 @@ const Navbar = () => {
   useEffect(() => {
     if (user) {
       if (user.files && user.files[0] && user.files[0].fileName) {
-        setAvatar(`http://localhost:8000/images/${user.files[0].fileName}`);
+        setAvatar(`http://localhost:8001/images/${user.files[0].fileName}`);
       } else {
         setAvatar("/images/default_avatar.png");
       }

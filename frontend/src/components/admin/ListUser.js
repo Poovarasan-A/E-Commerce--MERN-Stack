@@ -70,7 +70,7 @@ const ListUser = () => {
             {users.map((user, index) => {
               const avatar =
                 user.files.length > 0
-                  ? `http://localhost:8000/images/${user.files[0].fileName}`
+                  ? `http://localhost:8001/images/${user.files[0].fileName}`
                   : "/images/default_avatar.png";
 
               return (

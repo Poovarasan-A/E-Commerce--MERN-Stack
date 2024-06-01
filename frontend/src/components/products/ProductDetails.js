@@ -90,7 +90,7 @@ const ProductDetails = () => {
               product.files.map((file) => (
                 <div key={file._id}>
                   <img
-                    src={`http://localhost:8000/images/${file.fileName}`}
+                    src={`http://localhost:8001/images/${file.fileName}`}
                     alt="product"
                   />
                 </div>

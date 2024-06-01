@@ -8,7 +8,7 @@ const Products = ({ product }) => {
     if (product) {
       if (product.files && product.files[0] && product.files[0].fileName) {
         setProductImage(
-          `http://localhost:8000/images/${product.files[0].fileName}`
+          `http://localhost:8001/images/${product.files[0].fileName}`
         );
       } else {
         setProductImage("");
@@ -36,7 +36,3 @@ const Products = ({ product }) => {
   );
 };
 export default Products;
-
-// {/* <h5 className="text-sm">
-//               {product.ratings} ({product.numOfReviews})
-//             </h5> */}

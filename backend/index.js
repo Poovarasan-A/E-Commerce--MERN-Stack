@@ -43,6 +43,6 @@ app.get("*", (req, res) => {
 
 connectDB();
 
-const port = 8000;
+const port = process.env.PORT;
 
-app.listen(8000, () => console.log(`server listening on port :${port}`));
+app.listen(port, () => console.log(`server listening on port :${port}`));
