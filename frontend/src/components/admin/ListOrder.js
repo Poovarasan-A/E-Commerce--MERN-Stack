@@ -44,6 +44,7 @@ const ListOrder = () => {
         position: "top-center",
         onOpen: () => dispatch(clearOrderDeleted()),
       });
+      dispatch(clearOrderDeleted());
       return;
     }
 

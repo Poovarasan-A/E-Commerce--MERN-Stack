@@ -44,6 +44,7 @@ const ListProducts = () => {
         position: "top-center",
         onOpen: () => dispatch(clearProductDeleted()),
       });
+      dispatch(clearProductDeleted());
       navigate("/admin/products");
       return;
     }
@@ -52,7 +53,7 @@ const ListProducts = () => {
   }, [dispatch, error, isProductDeleted, productError, navigate]);
 
   return (
-    <div className="w-full h-full flex justify-center items-center bg-neutral-200 bg-opacity-60">
+    <div className="w-full flex justify-center items-center bg-neutral-200 bg-opacity-60">
       <div>
         <Sidebar />
       </div>
@@ -69,7 +70,7 @@ const ListProducts = () => {
         {loading ? (
           <Loader />
         ) : (
-          <div className=" w-full h-screen pb-5">
+          <div className=" w-full pb-5">
             {/* Headings */}
             <div className="w-full flex items-center text-gray-600 pt-2 pb-5">
               <b className="bg-neutral-200 w-[5%] py-2 pl-4">#</b>

@@ -17,7 +17,7 @@ const AddNewProduct = () => {
   const [category, setCategory] = useState("");
   const [stock, setStock] = useState(0);
   const [seller, setSeller] = useState("");
-  const [productImage, setProductImage] = useState("");
+  const [productImages, setProductImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const { isProductCreated, error } = useSelector(
@@ -42,10 +42,6 @@ const AddNewProduct = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const onImageChange = (e) => {
-  //   setProductImage(e.target.files[0]);
-  // };
-
   const onImagesChange = (e) => {
     const files = Array.from(e.target.files);
 
@@ -55,13 +51,12 @@ const AddNewProduct = () => {
       reader.onload = () => {
         if (reader.readyState === 2) {
           setImagesPreview((oldArray) => [...oldArray, reader.result]);
-          // setProductImage((oldArray) => [...oldArray, file]);
         }
       };
 
       reader.readAsDataURL(file);
     });
-    setProductImage(e.target.files);
+    setProductImages(e.target.files[0]);
   };
 
   const submitHandler = (e) => {
@@ -75,13 +70,11 @@ const AddNewProduct = () => {
       stock,
     };
     const imageData = new FormData();
-    for (let i = 0; i < productImage.length; i++) {
-      imageData.append(`files${i}`, productImage[i]);
-    }
-    console.log(imageData.getAll("files"));
+    imageData.append("files", productImages);
+
+    console.log(productImages);
     dispatch(addNewProduct(formData, imageData));
   };
-
   useEffect(() => {
     if (isProductCreated) {
       toast.success("Product Created Successfully !", {

@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "../../actions/authAction";
 import { clearUpdateUser } from "../../slices/authSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const MyProfile = () => {
@@ -15,17 +15,17 @@ const MyProfile = () => {
   );
   const { user, error, isUpdated } = useSelector((state) => state.authState);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onChangeAvatar = (e) => {
     const reader = new FileReader();
     reader.onload = () => {
       if (reader.readyState === 2) {
         setAvatarPreview(reader.result);
-        setAvatar(e.target.files[0]);
       }
     };
-
     reader.readAsDataURL(e.target.files[0]);
+    setAvatar(e.target.files[0]);
   };
 
   const submitHandler = (e) => {
@@ -33,7 +33,7 @@ const MyProfile = () => {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("email", email);
-    formData.append("avatar", avatar);
+    formData.append("files", avatar);
     dispatch(updateProfile(formData));
   };
 
@@ -49,6 +49,7 @@ const MyProfile = () => {
         position: "top-center",
         onOpen: () => dispatch(clearUpdateUser()),
       });
+      navigate("/myprofile");
       return;
     }
     if (error) {
@@ -57,15 +58,19 @@ const MyProfile = () => {
       });
       return;
     }
-  }, [user, isUpdated, error, dispatch]);
+  }, [user, isUpdated, error, dispatch, navigate]);
   return (
     <Fragment>
       <div className="w-full h-full p-8 bg-white">
         <h2 className="font-bold text-2xl">Update Profile</h2>
         <form onSubmit={submitHandler} className="flex pt-10">
           <div className="w-[30%] flex flex-col items-center justify-center">
-            <div className="w-[15rem] h-[15rem] rounded-full bg-white">
-              <img src={avatarPreview} alt="" />
+            <div className="w-[15rem] h-[15rem] rounded-full object-cover bg-white">
+              <img
+                src={avatarPreview}
+                className="rounded-full object-cover w-[15rem] h-[15rem]"
+                alt=""
+              />
             </div>
             <div className="pt-10 flex flex-col gap-5">
               <input name="avatar" type="file" onChange={onChangeAvatar} />

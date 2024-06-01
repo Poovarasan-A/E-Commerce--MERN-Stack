@@ -1,6 +1,10 @@
 import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addReview, getSingleProduct } from "../../actions/productAction";
+import {
+  // addRelatedProducts,
+  addReview,
+  getSingleProduct,
+} from "../../actions/productAction";
 import { useParams } from "react-router-dom";
 import Loader from "../layouts/Loader";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -17,6 +21,8 @@ import {
   clearReviewSubmitted,
 } from "../../slices/productSlice";
 import ProductReview from "./ProductReview";
+import Footer from "../layouts/Footer";
+// import { getAllProducts } from "../../actions/productsAction";
 
 const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
@@ -30,8 +36,10 @@ const ProductDetails = () => {
     error,
   } = useSelector((state) => state.productState);
   const { user } = useSelector((state) => state.authState);
+  const { products } = useSelector((state) => state.productsState);
   const dispatch = useDispatch();
   const { id } = useParams();
+  console.log(products);
 
   const increaseQty = () => {
     if (product.stock === 0 || quantity >= product.stock) {
@@ -70,10 +78,27 @@ const ProductDetails = () => {
 
   useEffect(() => {
     dispatch(getSingleProduct(id));
+    // dispatch(getAllProducts(null, null, null, null));
+    // console.log(products);
+
+    // if (product.category) {
+    //   const relatedProducts = products.filter(
+    //     (prod) => prod.category === product.category
+    //   );
+    //   const relatedProduct = relatedProducts.category;
+    //   console.log(relatedProducts);
+    //   dispatch(addRelatedProducts(relatedProducts));
+    // }
+
     return () => {
       dispatch(clearProduct());
     };
   }, [dispatch, id]);
+
+  // useEffect(() => {
+  //   dispatch(getSingleProduct(id));
+  //
+  // }, [dispatch, id]);
 
   if (loading) {
     return <Loader />;
@@ -85,7 +110,10 @@ const ProductDetails = () => {
 
       <div className="w-full h-screen lg:flex pt-[4rem] bg-white">
         <div className="w-full lg:w-[40%] flex items-centerbg-neutral-200 bg-opacity-70 justify-center ">
-          <Carousel className="w-[31rem] flex flex-col pt-[2rem]" dynamicHeight>
+          <Carousel
+            className="w-[31rem] h-[40rem] bg-white flex flex-col pt-[2rem]"
+            dynamicHeight
+          >
             {product.files &&
               product.files.map((file) => (
                 <div key={file._id}>
@@ -182,12 +210,12 @@ const ProductDetails = () => {
           <p className="my-3">Sold By: {product.seller}</p>
           <p className="my-3">Category: {product.category}</p>
         </div>
-        <div className="w-[18%] bg-gray-100 px-3 py-6">
+        {/* <div className="w-[18%] bg-gray-100 px-3 py-6">
           <h3 className="font-semibold text-lg text-center">
             Related Products
           </h3>
           <hr className="my-3" />
-        </div>
+        </div> */}
       </div>
       <hr />
       {/* Reviews page */}
@@ -235,11 +263,12 @@ const ProductDetails = () => {
         </div>
       </div>
 
-      <div className="w-full px-32">
+      <div className="w-full px-32 mb-10 flex flex-col ">
         {product.reviews && product.reviews.length > 0 ? (
           <ProductReview reviews={product.reviews} />
         ) : null}
       </div>
+      <Footer />
     </Fragment>
   );
 };

@@ -7,17 +7,18 @@ export const ProtectedRoute = ({ children, isAdmin }) => {
     (state) => state.authState
   );
 
-  if (loading) {
-    return <Loader />;
-  }
-
   if (!isAuthenticated && !loading) {
     return <Navigate to="/login" />;
   }
-  if (!isAuthenticated) {
+
+  if (isAuthenticated) {
     if (isAdmin === true && user.role !== "admin") {
       return <Navigate to="/" />;
     }
     return children;
+  }
+
+  if (loading) {
+    return <Loader />;
   }
 };

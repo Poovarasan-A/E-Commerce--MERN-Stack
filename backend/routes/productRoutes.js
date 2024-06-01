@@ -9,6 +9,7 @@ import {
   deleteReview,
   getAdminProducts,
   addNewProducts,
+  getRelatedProducts,
 } from "../controllers/productController.js";
 import {
   authorizeRoles,
@@ -21,6 +22,7 @@ const router = express.Router();
 // Public routes
 router.route("/products").get(getProducts);
 router.route("/product/:id").get(singleProduct);
+router.route("/products/related/:category").get(getRelatedProducts);
 
 // Review routes
 router.route("/review").put(isAuthenticatedUser, createReview);

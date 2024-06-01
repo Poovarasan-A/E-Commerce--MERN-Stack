@@ -71,6 +71,28 @@ const singleProduct = async (req, res, next) => {
   }
 };
 
+//get related products
+const getRelatedProducts = async (req, res, next) => {
+  try {
+    const category = req.params.category;
+    const relatedProducts = await Product.find({ category }).limit(5);
+
+    if (relatedProducts.length === 0) {
+      return res.status(404).json({ message: "Category not found" });
+    }
+
+    res.status(200).json({
+      success: true,
+      relatedProducts,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 // UPDATE product by ID
 const updateProduct = async (req, res, next) => {
   try {
@@ -224,4 +246,5 @@ export {
   getReviews,
   deleteReview,
   getAdminProducts,
+  getRelatedProducts,
 };

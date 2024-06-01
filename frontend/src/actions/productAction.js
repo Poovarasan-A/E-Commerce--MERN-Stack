@@ -22,6 +22,9 @@ import {
   deleteReviewRequest,
   deleteReviewSuccess,
   deleteReviewFail,
+  getRelatedProductsRequest,
+  getRelatedProductsSuccess,
+  getRelatedProductsFail,
 } from "../slices/productSlice";
 import {
   adminProductsFail,
@@ -141,5 +144,17 @@ export const deleteReview = (productId, id) => async (dispatch) => {
   } catch (error) {
     //handle error
     dispatch(deleteReviewFail(error.response.data.message));
+  }
+};
+
+export const addRelatedProducts = (relatedProducts) => async (dispatch) => {
+  try {
+    dispatch(getRelatedProductsRequest());
+    const { data } = await axios.get(
+      `api/v1/products/related/${relatedProducts}`
+    );
+    dispatch(getRelatedProductsSuccess(data));
+  } catch (error) {
+    dispatch(getRelatedProductsFail(error.response.data.message));
   }
 };

@@ -39,6 +39,7 @@ const ListUser = () => {
         position: "top-center",
         onOpen: () => dispatch(clearUserDeleted()),
       });
+      dispatch(clearUserDeleted());
       return;
     }
 

@@ -192,6 +192,24 @@ const productSlice = createSlice({
         isReviewDeleted: false,
       };
     },
+    getRelatedProductsRequest(state, action) {
+      return {
+        ...state,
+        loading: true,
+      };
+    },
+    getRelatedProductsSuccess(state, action) {
+      return {
+        ...state,
+        relatedProducts: action.payload,
+      };
+    },
+    getRelatedProductsFail(state, action) {
+      return {
+        ...state,
+        error: action.payload,
+      };
+    },
   },
 });
 
@@ -227,6 +245,9 @@ export const {
   deleteReviewSuccess,
   clearReviewDeleted,
   clearReviewSubmitted,
+  getRelatedProductsRequest,
+  getRelatedProductsSuccess,
+  getRelatedProductsFail,
 } = actions;
 
 export default reducer;
