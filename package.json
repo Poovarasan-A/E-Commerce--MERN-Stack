@@ -10,7 +10,8 @@
     "fullstack": "concurrently \"npm run client\" \"npm run backend\"",
     "seeder": "node backend/utils/seeder.js",
     "dev": "set NODE_ENV=development&&nodemon backend/index.js",
-    "prod": "set NODE_ENV=production&&nodemon backend/index.js"
+    "prod": "set NODE_ENV=production&&nodemon backend/index.js",
+    "build": "npm install --prefix frontend && npm run build --prefix frontend && npm install"
   },
   "keywords": [],
   "author": "",

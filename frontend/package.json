@@ -12,6 +12,7 @@
     "axios": "^1.6.8",
     "chart.js": "^4.4.3",
     "countries-list": "^3.1.0",
+    "e-com": "file:..",
     "mdbreact": "^5.2.0",
     "rc-slider": "^10.6.2",
     "rc-tooltip": "^6.2.0",
