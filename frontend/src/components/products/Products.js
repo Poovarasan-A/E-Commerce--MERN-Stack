@@ -4,17 +4,19 @@ import { Link } from "react-router-dom";
 
 const Products = ({ product }) => {
   const [productImage, setProductImage] = useState("");
+  const baseURL = process.env.BACKEND_URL;
   useEffect(() => {
     if (product) {
       if (product.files && product.files[0] && product.files[0].fileName) {
         setProductImage(
-          `http://localhost:8001/images/${product.files[0].fileName}`
+          // `http://localhost:8001/images/${product.files[0].fileName}`
+          `${baseURL}/images/${product.files[0].fileName}`
         );
       } else {
         setProductImage("");
       }
     }
-  }, [product]);
+  }, [product, baseURL]);
 
   return (
     <div>
