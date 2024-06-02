@@ -2,14 +2,33 @@ import { RiInstagramFill } from "react-icons/ri";
 import { FaGithub } from "react-icons/fa";
 import { IoLogoLinkedin } from "react-icons/io5";
 import { BsStripe } from "react-icons/bs";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="bg-[#262626] flex flex-col text-neutral-300 pt-10">
       <div className="flex w-full justify-between px-10">
         <div className="flex gap-4 text-2xl cursor-pointer">
-          <RiInstagramFill />
-          <FaGithub />
-          <IoLogoLinkedin />
+          <Link
+            href="https://www.instagram.com/im_darkk_?utm_source=qr&igsh=MWlzZ3drZ3N2cmZuaw=="
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <RiInstagramFill />
+          </Link>
+          <Link
+            href="https://github.com/Poovarasan-A"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaGithub />
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/poovarasan-arumugam-3b798523b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IoLogoLinkedin />
+          </Link>
         </div>
         <div>
           <img src="/images/whitelogo.png" className="w-[7rem]" alt="logo" />

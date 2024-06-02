@@ -1,7 +1,5 @@
 import { Fragment, useEffect } from "react";
-import MetaData from "../layouts/MetaData";
-import { MDBDataTable } from "mdbreact";
-import { Link } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import { allUserOrders } from "../../actions/orderAction";
 
@@ -9,77 +7,88 @@ const MyOrders = () => {
   const { userOrders = [] } = useSelector((state) => state.orderState);
   const dispatch = useDispatch();
 
+  const orders = userOrders.order || [];
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const formatDate = (dateString) => {
+    const year = dateString.substring(0, 4);
+    const monthIndex = parseInt(dateString.substring(5, 7), 10) - 1;
+    const monthName = monthNames[monthIndex];
+    return `${monthName} ${year}`;
+  };
+
   useEffect(() => {
     dispatch(allUserOrders());
   }, [dispatch]);
 
-  const setOrders = () => {
-    const data = {
-      columns: [
-        {
-          label: "Order ID",
-          field: "id",
-          sort: "asc",
-        },
-        {
-          label: "Number of Items",
-          field: "numOfItems",
-          sort: "asc",
-        },
-        {
-          label: "Amount",
-          field: "amount",
-          sort: "asc",
-        },
-        {
-          label: "Status",
-          field: "status",
-          sort: "asc",
-        },
-        {
-          label: "Actions",
-          field: "actions",
-          sort: "asc",
-        },
-      ],
-      rows: [],
-    };
-    if (userOrders && Array.isArray(userOrders.order)) {
-      userOrders.order.forEach((userOrder) => {
-        data.rows.push({
-          id: userOrder._id,
-          numOfItems: userOrder.orderItems.length,
-          amount: `$${userOrder.totalPrice}`,
-          status:
-            userOrder.orderStatus &&
-            userOrder.orderStatus.includes("Delivered") ? (
-              <p style={{ color: "green" }}>{userOrder.orderStatus}</p>
-            ) : (
-              <p style={{ color: "red" }}>{userOrder.orderStatus}</p>
-            ),
-          actions: (
-            <Link to={`/order/details/${userOrder._id}`} className="">
-              <p>order</p>
-            </Link>
-          ),
-        });
-      });
-    }
-
-    return data;
-  };
-
   return (
     <Fragment>
-      <MetaData title="My Orders" />
-      <h1 className="mt-5">My Orders</h1>
-      <MDBDataTable
-        className="px-3"
-        bordered
-        striped
-        hover
-        data={setOrders()}
-      />
+      <div className="w-full h-screen pt-[4rem] px-20">
+        <h2 className="font-bold text-2xl py-5">My Orders</h2>
+        {orders.length > 0 ? (
+          orders.map((order) => {
+            const deliveredDate = formatDate(order.deliveredAt);
+
+            return (
+              <div key={order._id} className="flex w-full">
+                <div className="w-[70%] bg-neutral-200 bg-opacity-70 flex px-4 py-2 justify-between ">
+                  {order.orderItems.map((item, index) => (
+                    <div
+                      key={index}
+                      className="w-[60%] flex gap-4 justify-between items-center"
+                    >
+                      <div className="flex gap-4">
+                        <div>
+                          <img src={item.file} alt={item.name} width="100" />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                          <p className="font-bold">{item.name}</p>
+                          <p>Qty - {item.quantity}</p>
+                        </div>
+                      </div>
+                      <div>
+                        <p className="font-semibold"> ₹&nbsp;{item.price}</p>
+                      </div>
+                    </div>
+                  ))}
+                  <p className="font-bold ">
+                    <p className="text-green-700"> Delivered on</p>
+                    {deliveredDate}
+                  </p>
+                </div>
+                <hr />
+                <div className="w-[30%] border-2 border-neutral-200 h-full flex  flex-col justify-center px-4 py-2 mr-2">
+                  <div className="pb-2">
+                    <p className="font-semibold pb-1"> Order ID</p> {order._id}
+                  </div>
+                  <div className="">
+                    <p className="font-semibold pb-1">Shipping to</p>
+                    {order.shippingInfo.address},<br />
+                    {order.shippingInfo.city}, {order.shippingInfo.country}{" "}
+                    -&nbsp;
+                    {order.shippingInfo.postalCode}.
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <p>No orders found</p>
+        )}
+      </div>
     </Fragment>
   );
 };
