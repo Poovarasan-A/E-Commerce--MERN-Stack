@@ -19,7 +19,7 @@ const reducer = combineReducers({
 
 const store = configureStore({
   reducer,
-  // getDefaultMiddleware already includes thunk, so no need to add it separately
+
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
 
