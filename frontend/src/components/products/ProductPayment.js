@@ -125,13 +125,13 @@ const ProductPayment = () => {
   }, [dispatch, navigate, orderError, shippingInfo, order]);
 
   return (
-    <div className="px-20 pt-[4rem]">
-      <div className="w-[100%] h-screen">
+    <div className="lg:px-20 px-3 lg:pt-[4rem] pt-[6rem]">
+      <div className="w-[100%] ">
         <hr />
-        <div className="w-full flex">
+        <div className="w-full lg:flex">
           {/* Card Design */}
-          <div className="w-[60%] px-10 pt-5">
-            <h2 className="font-bold text-2xl my-4 text-start">
+          <div className="lg:w-[60%] lg:px-10 px-3 pt-5">
+            <h2 className="font-bold lg:text-2xl text-xl my-4 text-start">
               Payment Details
             </h2>
             <hr />
@@ -160,14 +160,14 @@ const ProductPayment = () => {
               </div>
               {/* Products */}
               <hr />
-              <h2 className="font-bold text-xl my-4 text-start">
+              <h2 className="font-bold lg:text-xl text-lg my-4 text-start">
                 Product you placing order
               </h2>
-              <div className="pl-5">
+              <div className="lg:pl-5">
                 {cartItems.map((item, index) => (
                   <div className="flex flex-col justify-between" key={index}>
                     <div className="w-full flex justify-between py-6">
-                      <div className="w-[40%] flex gap-4">
+                      <div className="lg:w-[40%] flex gap-4">
                         <img
                           src={`http://localhost:8001/images/${item.file}`}
                           className="border-2 border-gray-400"
@@ -180,7 +180,7 @@ const ProductPayment = () => {
                           <p>Qty : {item.quantity}</p>
                         </div>
                       </div>
-                      <div className="flex justify-center items-center">
+                      <div className="flex justify-center lg:items-center items-end font-semibold">
                         <p>Rs.{item.price}</p>
                       </div>
                     </div>
@@ -191,8 +191,10 @@ const ProductPayment = () => {
             </div>
           </div>
           {/* Input Design */}
-          <div className="w-[40%] h-full flex flex-col justify-center pt-5">
-            <h2 className="font-bold text-2xl my-4 text-start">Card Details</h2>
+          <div className="lg:w-[40%] h-full flex flex-col px-5 lg:px-0 justify-center pt-5">
+            <h2 className="font-bold lg:text-2xl text-xl my-4 text-start">
+              Card Details
+            </h2>
             <hr />
             <form onSubmit={submitHandler} className="w-full py-4">
               <div className="flex flex-col py-2">
@@ -245,8 +247,8 @@ const ProductPayment = () => {
 
             <hr />
             {/* cod */}
-            <div className="w-full h-[8rem] rounded-lg border-2 border-gray-400 my-4 p-6">
-              <div className="flex gap-8">
+            <div className="w-full lg:h-[8rem] rounded-lg border-2 border-gray-400 my-4 p-6">
+              <div className="flex flex-col lg:flex-row gap-8">
                 <div>
                   <div className="flex gap-2">
                     <input type="radio" id="cod" />

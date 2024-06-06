@@ -48,9 +48,9 @@ const ShippingDetails = () => {
   const shouldHidePromo = true;
 
   return (
-    <div className="w-full h-full">
-      <div className="w-[75%] px-32  pt-5">
-        <h2 className="font-bold text-2xl my-4 text-start">
+    <div className="w-full h-full lg:pt-[4rem] pt-[6rem]">
+      <div className="lg:w-[75%] w-full lg:px-32 px-3 lg:pt-5 py-5">
+        <h2 className="font-bold text-xl lg:text-2xl my-4 text-start">
           Add Shipping Address
         </h2>
         <hr />
@@ -137,14 +137,14 @@ const ShippingDetails = () => {
             >
               Save and Deliver here
             </button>
-            <Link to="" className="text-blue-700 ml-10">
+            {/* <Link to="" className="text-blue-700 ml-10">
               Add Billing Address
-            </Link>
+            </Link> */}
           </div>
         </form>
       </div>
 
-      <div className="w-[25%] bg-slate-300 h-full px-8 pt-5 fixed top-[4rem] right-0">
+      <div className="lg:w-[25%] bg-slate-300 lg:h-full px-8 pt-5 lg:fixed top-[4rem] right-0">
         <CheckoutPage
           hideCheckoutButton={shouldHideCheckoutButton}
           hidePromo={shouldHidePromo}

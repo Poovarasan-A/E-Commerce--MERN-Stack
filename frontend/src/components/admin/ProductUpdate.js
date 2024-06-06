@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getSingleProduct, updateProduct } from "../../actions/productAction";
 import toast from "react-hot-toast";
 import {
@@ -9,19 +9,27 @@ import {
 } from "../../slices/productSlice";
 import Sidebar from "./Sidebar";
 import Loader from "../layouts/Loader";
+import { HiMenuAlt1 } from "react-icons/hi";
 
 const ProductUpdate = () => {
+  const [show, setShow] = useState(true);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [stock, setStock] = useState(0);
   const [seller, setSeller] = useState("");
+  const [productImages, setProductImages] = useState([]);
+  const [imagesPreview, setImagesPreview] = useState([]);
   const { id } = useParams();
 
   const { isProductUpdated, error, product, loading } = useSelector(
     (state) => state.productState
   );
+
+  const open = () => {
+    setShow(false);
+  };
 
   const categories = [
     "Electronics",
@@ -41,18 +49,22 @@ const ProductUpdate = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const submitHandler = (e) => {
-  //   e.preventDefault();
-  //   const productData = new FormData();
-  //   productData.append("name", name);
-  //   productData.append("price", price);
-  //   productData.append("stock", stock);
-  //   productData.append("description", description);
-  //   productData.append("seller", seller);
-  //   productData.append("category", category);
+  const onImagesChange = (e) => {
+    const files = Array.from(e.target.files);
 
-  //   dispatch(addNewProduct(productData));
-  // };
+    files.forEach((file) => {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setImagesPreview((oldArray) => [...oldArray, reader.result]);
+        }
+      };
+
+      reader.readAsDataURL(file);
+    });
+    setProductImages(e.target.files[0]);
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -64,6 +76,8 @@ const ProductUpdate = () => {
       seller,
       stock,
     };
+    const imageData = new FormData();
+    imageData.append("files", productImages);
     dispatch(updateProduct(id, formData));
   };
 
@@ -98,16 +112,21 @@ const ProductUpdate = () => {
     }
   }, [product]);
   return (
-    <div className="w-full h-full flex justify-center items-center">
-      <Sidebar />
+    <div className="w-full h-full flex justify-center items-center mb-10 lg:mb-0">
+      <div>
+        <Sidebar show={show} setShow={setShow} />
+      </div>
       {loading ? (
         <Loader />
       ) : (
-        <div className="w-full px-10">
-          <h2 className="my-5 text-2xl py-2 font-bold">Update Product</h2>
-          <form onSubmit={submitHandler} className="flex w-full gap-8">
+        <div className="w-full lg:px-10 px-4">
+          <div className="flex items-center lg:pt-2">
+            <HiMenuAlt1 className="text-[3rem] p-3 lg:hidden" onClick={open} />
+            <h2 className="my-5 text-2xl pl-2 font-bold">Update Product</h2>
+          </div>
+          <form onSubmit={submitHandler} className="lg:flex w-full gap-8">
             {/* First Col */}
-            <div className="w-[50%]">
+            <div className="lg:w-[50%] w-full">
               <b className="text-lg">Description</b>
               <div className="p-5 my-4 border-2  border-gray-200 rounded-lg">
                 {/* Product Name */}
@@ -170,7 +189,7 @@ const ProductUpdate = () => {
               </div>
             </div>
             {/* Second Col */}
-            <div className="w-[50%]">
+            <div className="lg:w-[50%] w-full">
               {/* Price */}
               <b className="text-lg">Price & Seller</b>
               <div className="p-5 my-4 border-2 w-full  border-gray-200 rounded-lg">
@@ -199,12 +218,34 @@ const ProductUpdate = () => {
                 </div>
               </div>
               <b className="text-lg">Product Images</b>
-              <div className="p-5 my-4 border-2 w-full  border-gray-200 rounded-lg">
+              <div className="p-5 my-4 border-2 w-full flex gap-4  border-gray-200 rounded-lg">
                 <div className="w-[8rem] h-[8rem] flex flex-col items-center justify-center border-2 rounded-md border-dashed border-gray-300">
-                  <Link to="" className="text-blue-500 text-sm underline">
-                    Click to upload
-                  </Link>
+                  <input
+                    type="file"
+                    id="uploadImg"
+                    className=" hidden"
+                    accept="image/*"
+                    multiple
+                    onChange={onImagesChange}
+                  />
+                  <label
+                    htmlFor="uploadImg"
+                    className="text-blue-500 text-sm underline cursor-pointer"
+                  >
+                    click to upload
+                  </label>
                   <p className="text-xs text-gray-400 pt-1">jpeg, jpg or png</p>
+                </div>
+                <div className="flex gap-2 border-2 border-gray-300">
+                  {imagesPreview.map((image) => (
+                    <img
+                      key={image}
+                      src={image}
+                      alt={""}
+                      width={130}
+                      height={130}
+                    />
+                  ))}
                 </div>
               </div>
               {/* Buttons */}

@@ -34,7 +34,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="w-[100%] h-full relative">
+    <div className="w-[100%] h-full relative lg:pt-[4rem] pt-[6rem]">
       {items.length === 0 ? (
         <div className="w-full h-full flex items-center justify-center">
           <h2 className="text-xl font-semibold text-center ">
@@ -42,14 +42,18 @@ const Cart = () => {
           </h2>
         </div>
       ) : (
-        <div className="flex w-[100%] h-full">
-          <div className="w-[75%] pl-10 pt-5">
-            <div className="flex justify-between pr-20">
-              <h2 className="font-bold text-2xl my-4">Shopping Cart</h2>
-              <h2 className="font-bold text-2xl my-4">{items.length} Items</h2>
+        <div className="lg:flex w-[100%] lg:h-full">
+          <div className="lg:w-[75%] lg:pl-10 pt-5">
+            <div className="flex justify-between lg:pr-20 px-2">
+              <h2 className="font-bold lg:text-2xl text-xl lg:my-4 my-2">
+                Shopping Cart
+              </h2>
+              <h2 className="font-bold lg:text-2xl text-xl lg:my-4 my-2">
+                {items.length} Items
+              </h2>
             </div>
             <hr />
-            <div className="text-gray-400 w-full flex justify-between pt-5">
+            <div className="text-gray-400 hidden w-full lg:flex justify-between pt-5">
               <h5 className="w-[40%] text-start">PRODUCT DETAILS</h5>
               <h5 className="w-[20%] text-center">QUANTITY</h5>
               <h5 className="w-[20%] text-center">PRICE</h5>
@@ -57,9 +61,9 @@ const Cart = () => {
             </div>
             {items.map((item, index) => {
               return (
-                <div className="flex flex-col " key={index}>
-                  <div className="w-full flex py-6">
-                    <div className="w-[40%] flex items-center gap-4">
+                <div className="w-full flex flex-col " key={index}>
+                  <div className="w-[100%] flex py-6 px-2 justify-between gap-4 lg:gap-0">
+                    <div className="lg:w-[40%] w-[50%] flex items-center gap-4">
                       <img
                         src={`http://localhost:8001/images/${item.file}`}
                         className="border-2 border-gray-400"
@@ -71,7 +75,7 @@ const Cart = () => {
                         <Link to="">{item.name}</Link>
                         <p>{item.category}</p>
                         <button
-                          className="text-gray-500 font-semibold"
+                          className="text-gray-400 font-semibold"
                           onClick={() =>
                             dispatch(removeItemInCart(item.product))
                           }
@@ -80,34 +84,38 @@ const Cart = () => {
                         </button>
                       </div>
                     </div>
-                    <div className="w-[20%] flex items-center justify-center">
-                      <div className="w-[6rem] flex border-2 border-slate-800">
-                        <button
-                          className="bg-slate-800 text-white text-xl font-semibold px-2 cursor-pointer"
-                          onClick={() => decreaseQty(item)}
-                        >
-                          -
-                        </button>
-                        <input
-                          className="w-full outline-none text-center"
-                          type="number"
-                          value={item.quantity}
-                          onChange={(e) => handleQuantityChange(e, item)}
-                        />
-                        <button
-                          className="bg-slate-800 text-white text-xl font-semibold px-2 cursor-pointer"
-                          onClick={() => increaseQty(item)}
-                          disabled={item.stock === 0}
-                        >
-                          +
-                        </button>
+                    <div className="lg:w-[60%] w-[50%] flex flex-col lg:flex-row justify-around items-start lg:gap-0 gap-2">
+                      <div className="lg:w-[20%] flex items-center justify-center">
+                        <div className="w-[6rem] flex border-2 border-slate-800">
+                          <button
+                            className="bg-slate-800 text-white text-xl font-semibold px-2 cursor-pointer"
+                            onClick={() => decreaseQty(item)}
+                          >
+                            -
+                          </button>
+                          <input
+                            className="w-full outline-none text-center"
+                            type="number"
+                            value={item.quantity}
+                            onChange={(e) => handleQuantityChange(e, item)}
+                          />
+                          <button
+                            className="bg-slate-800 text-white text-xl font-semibold px-2 cursor-pointer"
+                            onClick={() => increaseQty(item)}
+                            disabled={item.stock === 0}
+                          >
+                            +
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                    <div className="w-[20%] flex justify-center items-center">
-                      <p>{item.price}</p>
-                    </div>
-                    <div className="w-[20%] flex justify-center items-center">
-                      <p>Rs. {(item.quantity * item.price).toFixed(2)}</p>
+                      <div className="lg:w-[20%] flex justify-center items-center">
+                        <p className="lg:hidden">Price - &nbsp;</p>
+                        <p>Rs.{item.price}</p>
+                      </div>
+                      <div className="lg:w-[20%] font-semibold flex justify-center items-center">
+                        <p className="lg:hidden">Total - &nbsp;</p>
+                        <p>Rs.{(item.quantity * item.price).toFixed(2)}</p>
+                      </div>
                     </div>
                   </div>
                   <hr />
@@ -115,7 +123,7 @@ const Cart = () => {
               );
             })}
           </div>
-          <div className="w-[25%] bg-slate-300 h-full px-8 pt-5 fixed top-[4rem] right-0">
+          <div className="lg:w-[25%] bg-slate-300 lg:h-full px-8 lg:pt-5 py-5 lg:fixed top-[4rem] right-0">
             <CheckoutPage />
           </div>
         </div>

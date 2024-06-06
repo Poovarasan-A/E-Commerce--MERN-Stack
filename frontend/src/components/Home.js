@@ -25,12 +25,13 @@ const Home = () => {
       ) : (
         <>
           <MetaData title={"Home"} />
-          <div className=" my-2 w-full flex flex-col box-border pt-[6rem] lg:pt-[4rem] bg-white overflow-x-hidden px-10">
+          <div className=" my-2 w-full flex flex-col box-border pt-[6rem] lg:pt-[4rem] bg-white overflow-x-hidden lg:px-10">
             <Carousel
-              className="w-full flex flex-col pt-3"
+              className="lg:w-full flex flex-col pt-3"
               autoPlay
               infiniteLoop
               showThumbs={false}
+              showArrows={false}
             >
               <div>
                 <img src="/images/products/e1.jpg" alt="product" />
@@ -43,7 +44,9 @@ const Home = () => {
                 <img src="/images/products/e2.jpg" alt="product" />
               </div>
             </Carousel>
-            <h2 className="font-bold text-2xl my-3">Explore Products</h2>
+            <h2 className="font-bold text-2xl my-3 pl-2 lg:pl-0">
+              Explore Products
+            </h2>
             <div className="w-full h-full flex flex-wrap justify-center gap-5 bg-neutral-200 bg-opacity-70 items-center pt-2">
               {products &&
                 products.map((product) => (

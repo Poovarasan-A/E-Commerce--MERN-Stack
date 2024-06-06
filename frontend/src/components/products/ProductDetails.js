@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   // addRelatedProducts,
@@ -105,10 +105,10 @@ const ProductDetails = () => {
   }
 
   return (
-    <Fragment>
+    <div className="w-full ">
       <MetaData title={product.name} />
 
-      <div className="w-full h-screen lg:flex pt-[4rem] bg-white">
+      <div className="w-full lg:h-screen lg:flex pt-[4rem] bg-white">
         <div className="w-full lg:w-[40%] flex items-centerbg-neutral-200 bg-opacity-70 justify-center ">
           <Carousel
             className="w-[31rem] h-[40rem] bg-white flex flex-col pt-[2rem]"
@@ -226,7 +226,7 @@ const ProductDetails = () => {
       {/* Reviews page */}
       <div className="w-full py-5">
         {user ? (
-          <div className="w-full justify-between px-32 flex">
+          <div className="w-full justify-between lg:px-32 px-4">
             <h2 className="font-bold text-xl">Product Reviews</h2>
           </div>
         ) : (
@@ -235,46 +235,44 @@ const ProductDetails = () => {
             Login to Post Review
           </div>
         )}
-        <div className="">
-          <div className=" w-full px-32 flex flex-col">
-            <div>
-              <ReactStars
-                size={30}
-                value={rating}
-                onChange={handleRatingChange}
-                activeColor={"#FF9529"}
-                edit={true}
-              />
-            </div>
-            <div className="py-5">
-              <textarea
-                onChange={(e) => setComment(e.target.value)}
-                name="review"
-                placeholder="Provide your review..."
-                className="w-full border-2 resize-none h-32 border-zinc-500 rounded-md px-2 py-2"
-              ></textarea>
-            </div>
-            <div>
-              <button
-                disabled={loading}
-                onClick={reviewHandler}
-                aria-label="Close"
-                className="rounded-md py-1 my-3 float-right bg-orange-400 px-4 text-white"
-              >
-                Submit Review
-              </button>
-            </div>
+        <div className=" w-full px-4 lg:px-32 flex flex-col">
+          <div>
+            <ReactStars
+              size={30}
+              value={rating}
+              onChange={handleRatingChange}
+              activeColor={"#FF9529"}
+              edit={true}
+            />
+          </div>
+          <div className="py-5 w-full">
+            <textarea
+              onChange={(e) => setComment(e.target.value)}
+              name="review"
+              placeholder="Provide your review..."
+              className="w-full border-2 resize-none h-32 border-zinc-500 rounded-md px-2 py-2"
+            ></textarea>
+          </div>
+          <div>
+            <button
+              disabled={loading}
+              onClick={reviewHandler}
+              aria-label="Close"
+              className="rounded-md py-1 my-3 float-right bg-orange-400 px-4 text-white"
+            >
+              Submit Review
+            </button>
           </div>
         </div>
       </div>
 
-      <div className="w-full px-32 mb-10 flex flex-col ">
+      <div className="w-full px-4 lg:px-32 mb-10 flex flex-col ">
         {product.reviews && product.reviews.length > 0 ? (
           <ProductReview reviews={product.reviews} />
         ) : null}
       </div>
       <Footer />
-    </Fragment>
+    </div>
   );
 };
 

@@ -18,7 +18,7 @@ const CheckoutPage = ({ hideCheckoutButton, hidePromo, hideSummary }) => {
     <div>
       <div>
         {!hideSummary && (
-          <h2 className="font-bold text-2xl my-4">Order Summary</h2>
+          <h2 className="font-bold lg:text-2xl text-xl my-4">Order Summary</h2>
         )}
         <hr />
         <div className="py-5">

@@ -162,7 +162,7 @@ const App = () => {
             </Routes>
 
             {/* Admin Routes */}
-            <div className="pl-[15rem]">
+            <div className="lg:pl-[15rem]">
               <Routes>
                 <Route
                   path="/admin/dashboard"

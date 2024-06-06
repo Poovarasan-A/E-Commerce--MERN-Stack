@@ -6,8 +6,11 @@ import { getSingleUser, updateUser } from "../../actions/authAction";
 import { clearUserError, clearUserUpdated } from "../../slices/userSlice";
 import Loader from "../layouts/Loader";
 import Sidebar from "./Sidebar";
+import { HiMenuAlt1 } from "react-icons/hi";
 
 const UserUpdate = () => {
+  const [show, setShow] = useState(true);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
@@ -21,6 +24,10 @@ const UserUpdate = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const open = () => {
+    setShow(false);
+  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -65,11 +72,16 @@ const UserUpdate = () => {
 
   return (
     <Fragment>
-      <div className="w-full h-screen flex justify-center items-center">
-        <Sidebar />
-
-        <div className="w-[50%] h-full flex items-center justify-center bg-white">
-          <div className="bg-white w-[25rem] h-[28rem] flex items-center justify-center rounded-md z-50">
+      <div className="w-full h-screen lg:flex justify-center items-center">
+        <div>
+          <Sidebar show={show} setShow={setShow} />
+        </div>
+        <div className="flex items-center lg:pt-2">
+          <HiMenuAlt1 className="text-[3rem] p-3 lg:hidden" onClick={open} />
+          <h2 className="my-5 text-2xl pl-2  font-bold">Update User</h2>
+        </div>
+        <div className="lg:w-[50%] lg:h-full flex items-center justify-center bg-white">
+          <div className="bg-white w-[25rem] h-[28rem] flex items-center justify-center rounded-md">
             <form
               onSubmit={submitHandler}
               className="flex flex-col w-[20rem] gap-5"
@@ -108,7 +120,7 @@ const UserUpdate = () => {
             </form>
           </div>
         </div>
-        <div className="w-[50%] h-full flex items-center">
+        <div className="w-[50%] h-full lg:flex items-center hidden">
           <img
             className="bg-cover"
             src="/images/Wolfkart-login-page.jpg"

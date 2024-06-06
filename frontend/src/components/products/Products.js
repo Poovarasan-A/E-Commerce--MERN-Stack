@@ -9,8 +9,8 @@ const Products = ({ product }) => {
     if (product) {
       if (product.files && product.files[0] && product.files[0].fileName) {
         setProductImage(
-          // `http://localhost:8001/images/${product.files[0].fileName}`
-          `${baseURL}/images/${product.files[0].fileName}`
+          `http://localhost:8001/images/${product.files[0].fileName}`
+          // `${baseURL}/images/${product.files[0].fileName}`
         );
       } else {
         setProductImage("");

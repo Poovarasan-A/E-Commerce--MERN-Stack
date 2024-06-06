@@ -37,7 +37,7 @@ const MyProfile = () => {
           </div>
           <form className="flex h-full">
             <div className="w-[30%] h-full flex flex-col items-center">
-              <div className="w-[15rem] h-[15rem] rounded-full bg-white">
+              <div className="w-[15rem] h-[15rem] rounded-full overflow-hidden bg-white">
                 <img
                   src={avatar || "/images/default_avatar.png"}
                   className="rounded-full"

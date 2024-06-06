@@ -31,8 +31,8 @@ const OrderConfirm = () => {
   const shouldHidePromo = true;
   const shouldHideSummary = true;
   return (
-    <div className="w-full h-full">
-      <div className="w-[75%] px-16  pt-5">
+    <div className="w-full h-full lg:pt-[4rem] pt-[6rem]">
+      <div className="lg:w-[75%] lg:px-16 px-3  pt-5">
         <h2 className="font-bold text-2xl my-4 text-start">Order Summary</h2>
         <hr />
         <div>
@@ -68,7 +68,7 @@ const OrderConfirm = () => {
             {cartItems.map((item, index) => (
               <div className=" flex flex-col justify-between" key={index}>
                 <div className="w-full flex justify-between py-6">
-                  <div className="w-[40%] flex gap-4">
+                  <div className="lg:w-[40%] flex gap-4">
                     <img
                       src={`http://localhost:8001/images/${item.file}`}
                       className="border-2 border-gray-400"
@@ -81,7 +81,8 @@ const OrderConfirm = () => {
                       <p>Qty : {item.quantity}</p>
                     </div>
                   </div>
-                  <div className=" flex justify-center items-center ">
+                  <div className=" flex lg:justify-center font-semibold lg:items-center items-end">
+                    {/* <p className="lg:hidden">Price - &nbsp;</p> */}
                     <p>Rs.{item.price}</p>
                   </div>
                 </div>
@@ -92,8 +93,10 @@ const OrderConfirm = () => {
         </div>
       </div>
 
-      <div className="w-[25%] bg-slate-300 h-full px-8 pt-5 fixed top-[4rem] right-0">
-        <h2 className="font-bold text-2xl my-4 text-start">Payment Details</h2>
+      <div className="lg:w-[25%] bg-slate-300 lg:h-full px-8 lg:pb-0 pb-10 pt-5 lg:fixed top-[4rem] right-0">
+        <h2 className="font-bold lg:text-2xl text-xl my-4 text-start">
+          Payment Details
+        </h2>
 
         <CheckoutPage
           hideCheckoutButton={shouldHideCheckoutButton}

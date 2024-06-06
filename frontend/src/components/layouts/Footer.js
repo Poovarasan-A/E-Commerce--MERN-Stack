@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="bg-[#262626] flex flex-col text-neutral-300 pt-10">
-      <div className="flex w-full justify-between px-10">
-        <div className="flex gap-4 text-2xl cursor-pointer">
+      <div className="flex w-full justify-between lg:px-10 px-4">
+        <div className="flex gap-4 lg:text-2xl text-xl cursor-pointer">
           <Link
             href="https://www.instagram.com/im_darkk_?utm_source=qr&igsh=MWlzZ3drZ3N2cmZuaw=="
             target="_blank"
@@ -34,18 +34,22 @@ const Footer = () => {
           <img src="/images/whitelogo.png" className="w-[7rem]" alt="logo" />
         </div>
         <div className="flex gap-2  items-center">
-          <BsStripe className="text-2xl" />
+          <BsStripe className="lg:text-2xl text-xl" />
           <p>Stripe</p>
         </div>
       </div>
-      <div className="flex w-full items-center justify-center gap-10 py-14 text-xs tracking-widest cursor-pointer">
-        <p>ELECTRONICS</p>
-        <p>CLOTHES</p>
-        <p>ACCESSORIES</p>
-        <p>LAPTOPS</p>
-        <p>MOBILES</p>
-        <p>SPORTS</p>
-        <p>BEAUTY</p>
+      <div className="flex flex-col lg:flex-row w-full items-center justify-center gap-10 py-14 lg:text-xs text-[10px] tracking-widest cursor-pointer">
+        <div className="flex lg:gap-10 gap-8">
+          <p>ELECTRONICS</p>
+          <p>CLOTHES</p>
+          <p>ACCESSORIES</p>
+          <p>LAPTOPS</p>
+        </div>
+        <div className="flex lg:gap-10 gap-8">
+          <p>MOBILES</p>
+          <p>SPORTS</p>
+          <p>BEAUTY</p>
+        </div>
       </div>
       <hr className="border-neutral-700" />
       <div className="w-full flex justify-center py-4 text-xs">
