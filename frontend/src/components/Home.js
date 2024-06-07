@@ -25,23 +25,38 @@ const Home = () => {
       ) : (
         <>
           <MetaData title={"Home"} />
-          <div className=" my-2 w-full flex flex-col box-border pt-[6rem] lg:pt-[4rem] bg-white overflow-x-hidden lg:px-10">
+          <div className=" my-2 w-full flex flex-col box-border pt-[4rem] lg:pt-[4rem] bg-white overflow-x-hidden lg:px-10">
             <Carousel
-              className="lg:w-full flex flex-col pt-3"
+              className="lg:w-full lg:h-full flex flex-col pt-3"
               autoPlay
               infiniteLoop
               showThumbs={false}
               showArrows={false}
             >
               <div>
-                <img src="/images/products/e1.jpg" alt="product" />
+                <div className="lg:flex hidden">
+                  <img src="/images/products/e1.jpg" alt="product" />
+                </div>
+                <div className="lg:hidden">
+                  <img src="/images/products/e10.jpg" alt="product" />
+                </div>
               </div>
               <div>
-                <img src="/images/products/e3.jpg" alt="product" />
+                <div className="lg:flex hidden">
+                  <img src="/images/products/e3.jpg" alt="product" />
+                </div>
+                <div className="lg:hidden">
+                  <img src="/images/products/e30.jpg" alt="product" />
+                </div>
               </div>
 
               <div>
-                <img src="/images/products/e2.jpg" alt="product" />
+                <div className="lg:flex hidden">
+                  <img src="/images/products/e2.jpg" alt="product" />
+                </div>
+                <div className="lg:hidden">
+                  <img src="/images/products/e20.jpg" alt="product" />
+                </div>
               </div>
             </Carousel>
             <h2 className="font-bold text-2xl my-3 pl-2 lg:pl-0">

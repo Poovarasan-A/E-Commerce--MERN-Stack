@@ -15,7 +15,7 @@ const CheckoutPage = ({ hideCheckoutButton, hidePromo, hideSummary }) => {
   const taxCost = Number((0.05 * itemsCost).toFixed(2));
   const totalCost = (itemsCost + shippingCost + taxCost).toFixed(2);
   return (
-    <div>
+    <div className="pb-7 lg:pb-0">
       <div>
         {!hideSummary && (
           <h2 className="font-bold lg:text-2xl text-xl my-4">Order Summary</h2>

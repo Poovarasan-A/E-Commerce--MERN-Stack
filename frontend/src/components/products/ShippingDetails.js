@@ -48,7 +48,7 @@ const ShippingDetails = () => {
   const shouldHidePromo = true;
 
   return (
-    <div className="w-full h-full lg:pt-[4rem] pt-[6rem]">
+    <div className="w-full h-full lg:mt-[4rem] mt-[4rem]">
       <div className="lg:w-[75%] w-full lg:px-32 px-3 lg:pt-5 py-5">
         <h2 className="font-bold text-xl lg:text-2xl my-4 text-start">
           Add Shipping Address
@@ -149,8 +149,11 @@ const ShippingDetails = () => {
           hideCheckoutButton={shouldHideCheckoutButton}
           hidePromo={shouldHidePromo}
         />
-        <div className="w-full text-center text-blue-700 py-10 cursor-pointer">
-          <Link to="/" className="flex justify-center items-center  gap-2">
+        <div className="w-full text-center text-blue-700 lg:py-10 py-8 cursor-pointer">
+          <Link
+            to="/"
+            className="flex justify-center items-center  gap-2 mb-[4rem] lg:mb-0"
+          >
             <FaArrowLeft />
             Continue Shopping
           </Link>

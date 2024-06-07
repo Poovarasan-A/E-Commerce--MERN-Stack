@@ -5,7 +5,7 @@ import { BsStripe } from "react-icons/bs";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <div className="bg-[#262626] flex flex-col text-neutral-300 pt-10">
+    <div className="bg-[#262626] flex flex-col text-neutral-300 pt-10 lg:mb-0 mb-[3.5rem]">
       <div className="flex w-full justify-between lg:px-10 px-4">
         <div className="flex gap-4 lg:text-2xl text-xl cursor-pointer">
           <Link

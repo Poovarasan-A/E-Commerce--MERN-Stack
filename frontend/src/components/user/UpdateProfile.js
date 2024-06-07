@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "../../actions/authAction";
 import { clearUpdateUser } from "../../slices/authSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const MyProfile = () => {
@@ -62,7 +62,7 @@ const MyProfile = () => {
   }, [user, isUpdated, error, dispatch, navigate]);
   return (
     <Fragment>
-      <div className="w-full h-full p-8 bg-white lg:pt-[6rem] pt-[8rem]">
+      <div className="w-full h-full p-8 bg-white lg:pt-[4rem] pt-[8rem]">
         <h2 className="font-bold text-2xl">Update Profile</h2>
         <form
           onSubmit={submitHandler}

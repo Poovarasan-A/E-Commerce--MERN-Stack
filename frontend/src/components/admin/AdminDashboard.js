@@ -20,21 +20,18 @@ import { FaUsers } from "react-icons/fa";
 import { GiCash } from "react-icons/gi";
 import { HiMenuAlt1 } from "react-icons/hi";
 
-
 ChartJS.register(BarController, BarElement, CategoryScale, LinearScale);
 
 const AdminDashboard = () => {
-  const [show,setShow] = useState(true)
+  const [show, setShow] = useState(true);
   const { products = [] } = useSelector((state) => state.productsState);
   const { adminOrders = [] } = useSelector((state) => state.orderState);
   const { users = [] } = useSelector((state) => state.userState);
   const dispatch = useDispatch();
 
-
-const open = () => {
-  setShow(false);
-};
-
+  const open = () => {
+    setShow(false);
+  };
 
   let outOfStock = 0;
   if (products.length > 0) {
@@ -71,47 +68,47 @@ const open = () => {
   return (
     <div className="w-full lg:h-screen bg-neutral-200 bg-opacity-60  text-black relative">
       <div>
-      <Sidebar show={show} setShow={setShow}/>
+        <Sidebar show={show} setShow={setShow} />
       </div>
       <div className="p-3 lg:hidden">
-      <HiMenuAlt1 className="text-3xl" onClick={open}/>
+        <HiMenuAlt1 className="text-3xl" onClick={open} />
       </div>
       <div className="flex flex-col lg:px-10 px-2">
         <h2 className="my-5 text-2xl pl-2 pt-2 font-bold">Dashboard</h2>
         <div className="lg:flex flex flex-col lg:flex-row w-full justify-between text-white items-center py-2 gap-2 lg:gap-0">
           {/* Line 1 mob */}
-          <div className="w-full flex flex-row gap-2 lg:gap-0 lg:justify-around"> 
-          <div className="flex flex-col items-center lg:w-[16rem] lg:h-[9rem] w-[12rem] h-[8rem] shadow-sm rounded-3xl bg-violet-500 relative">
-            <h2 className=" text-xl font-bold py-4">Total Revenue</h2>
-            <GiCash className="text-[4rem] opacity-30 absolute top-14 left-5" />
-            <div className="flex w-full h-[50%] pb-5 justify-end px-10 items-center">
-              <b className="font-bold text-2xl">₹{totalAmount.toFixed(2)}</b>
+          <div className="w-full flex flex-row gap-2 lg:gap-0 lg:justify-around">
+            <div className="flex flex-col items-center lg:w-[16rem] lg:h-[9rem] w-[12rem] h-[8rem] shadow-sm rounded-3xl bg-violet-500 relative">
+              <h2 className=" text-xl font-bold py-4">Total Revenue</h2>
+              <GiCash className="text-[4rem] opacity-30 absolute top-14 left-5" />
+              <div className="flex w-full h-[50%] pb-5 justify-end px-10 items-center">
+                <b className="font-bold text-2xl">₹{totalAmount.toFixed(2)}</b>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-col items-center lg:w-[16rem] lg:h-[9rem] w-[12rem] h-[8rem] shadow-sm rounded-3xl bg-green-500 relative">
-            <h2 className=" text-xl font-bold py-4">Products</h2>
-            <FaBasketShopping className="text-[3.5rem] opacity-30 top-14 left-5 absolute" />
-            <div className="flex w-full   px-14 justify-end pb-5 h-[50%] items-center">
-              <b className="font-bold text-2xl">{products.length}</b>
+            <div className="flex flex-col items-center lg:w-[16rem] lg:h-[9rem] w-[12rem] h-[8rem] shadow-sm rounded-3xl bg-green-500 relative">
+              <h2 className=" text-xl font-bold py-4">Products</h2>
+              <FaBasketShopping className="text-[3.5rem] opacity-30 top-14 left-5 absolute" />
+              <div className="flex w-full   px-14 justify-end pb-5 h-[50%] items-center">
+                <b className="font-bold text-2xl">{products.length}</b>
+              </div>
             </div>
-          </div>
           </div>
           {/* Line 2 mob */}
-          <div className="w-full flex flex-row gap-2 lg:gap-0 lg:justify-around"> 
-          <div className="flex flex-col items-center lg:w-[16rem] lg:h-[9rem] w-[12rem] h-[8rem] shadow-sm rounded-3xl bg-blue-500 relative">
-            <h2 className=" text-xl font-bold py-4">Orders</h2>
-            <HiShoppingCart className="text-[3.5rem] opacity-30 absolute top-14 left-5" />
-            <div className="flex w-full   px-14 justify-end pb-5  h-[50%] items-center">
-              <b className="font-bold text-2xl">{adminOrders.length}</b>
+          <div className="w-full flex flex-row gap-2 lg:gap-0 lg:justify-around">
+            <div className="flex flex-col items-center lg:w-[16rem] lg:h-[9rem] w-[12rem] h-[8rem] shadow-sm rounded-3xl bg-blue-500 relative">
+              <h2 className=" text-xl font-bold py-4">Orders</h2>
+              <HiShoppingCart className="text-[3.5rem] opacity-30 absolute top-14 left-5" />
+              <div className="flex w-full   px-14 justify-end pb-5  h-[50%] items-center">
+                <b className="font-bold text-2xl">{adminOrders.length}</b>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-col items-center lg:w-[16rem] lg:h-[9rem] w-[12rem] h-[8rem] shadow-sm rounded-3xl bg-orange-500 relative">
-            <h2 className=" text-xl font-bold py-4">Users</h2>
-            <FaUsers className="text-[3.5rem] opacity-30 absolute top-14 left-5" />
-            <div className="flex w-full   px-14 justify-end pb-5  h-[50%] items-center">
-              <b className="font-bold text-2xl">{users.length}</b>
+            <div className="flex flex-col items-center lg:w-[16rem] lg:h-[9rem] w-[12rem] h-[8rem] shadow-sm rounded-3xl bg-orange-500 relative">
+              <h2 className=" text-xl font-bold py-4">Users</h2>
+              <FaUsers className="text-[3.5rem] opacity-30 absolute top-14 left-5" />
+              <div className="flex w-full   px-14 justify-end pb-5  h-[50%] items-center">
+                <b className="font-bold text-2xl">{users.length}</b>
+              </div>
             </div>
-          </div>
           </div>
         </div>
         <div className="lg:flex px-2 lg:px-0">

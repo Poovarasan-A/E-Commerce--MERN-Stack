@@ -20,13 +20,13 @@ const Search = () => {
     }
   }, [location]);
   return (
-    <div>
+    <div className="w-full">
       <form
         onSubmit={searchHandler}
-        className="flex flex-grow items-center gap-3 max-w-[35rem] md:min-w-[35rem] lg:min-w-[40rem] lg:h-[2.5rem] md:h-[2.5rem] h-[2rem]  bg-white justify-between px-4 rounded-3xl"
+        className="flex flex-grow items-center gap-3   md:min-w-[35rem] lg:min-w-[40rem] lg:h-[2.5rem] md:h-[2.5rem] h-[2.3rem]  bg-white justify-between px-4 rounded-3xl"
       >
         <input
-          className="flex-grow h-full outline-none"
+          className="flex-grow h-full outline-none lg:text-md text-sm"
           type="text"
           placeholder="Search for Products"
           value={keyword}

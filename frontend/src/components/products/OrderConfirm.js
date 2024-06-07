@@ -31,7 +31,7 @@ const OrderConfirm = () => {
   const shouldHidePromo = true;
   const shouldHideSummary = true;
   return (
-    <div className="w-full h-full lg:pt-[4rem] pt-[6rem]">
+    <div className="w-full h-full lg:mt-[4rem] my-[4rem]">
       <div className="lg:w-[75%] lg:px-16 px-3  pt-5">
         <h2 className="font-bold text-2xl my-4 text-start">Order Summary</h2>
         <hr />
@@ -105,7 +105,7 @@ const OrderConfirm = () => {
         />
         <div>
           <button
-            className="font-semibold text-white bg-slate-800 w-full py-2"
+            className="font-semibold text-white bg-slate-800 w-full py-2 mb-[4rem] lg:mb-0"
             onClick={paymentProcessHandler}
           >
             CONFIRM & PAY

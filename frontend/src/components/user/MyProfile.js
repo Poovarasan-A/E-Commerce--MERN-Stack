@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -29,13 +29,13 @@ const MyProfile = () => {
   }
 
   return (
-    <Fragment>
+    <div className="my-[3.5rem] lg:my-0">
       {user && (
-        <div className="w-full h-full p-8 lg:pt-[6rem] pt-[8rem] bg-white">
+        <div className="w-full h-full p-8 lg:pt-[4rem] pt-[8rem]bg-white">
           <div className="w-full">
             <h2 className="font-bold text-2xl mb-10">My Profile</h2>
           </div>
-          <form className="lg:flex lg:h-full">
+          <form className="lg:flex lg:h-full ">
             <div className="lg:w-[30%] lg:h-full flex flex-col items-center">
               <div className="w-[15rem] h-[15rem] rounded-full overflow-hidden bg-white">
                 <img
@@ -60,7 +60,7 @@ const MyProfile = () => {
               </div>
             </div>
             {/* Name & email */}
-            <div className="lg:w-[40%] px-5 h-full py-10 lg:py-0">
+            <div className="lg:w-[40%] px-5 h-full py-10 lg:py-0  ">
               <div className="w-full lg:w-[20rem] flex flex-col mb-8">
                 <label className="font-semibold text-lg mb-2">Name</label>
                 <input
@@ -128,7 +128,7 @@ const MyProfile = () => {
           </form>
         </div>
       )}
-    </Fragment>
+    </div>
   );
 };
 export default MyProfile;

@@ -125,7 +125,7 @@ const ProductPayment = () => {
   }, [dispatch, navigate, orderError, shippingInfo, order]);
 
   return (
-    <div className="lg:px-20 px-3 lg:pt-[4rem] pt-[6rem]">
+    <div className="lg:px-20 px-3 lg:pt-[4rem] pt-[4rem]">
       <div className="w-[100%] ">
         <hr />
         <div className="w-full lg:flex">
@@ -191,7 +191,7 @@ const ProductPayment = () => {
             </div>
           </div>
           {/* Input Design */}
-          <div className="lg:w-[40%] h-full flex flex-col px-5 lg:px-0 justify-center pt-5">
+          <div className="lg:w-[40%] h-full flex flex-col px-5 lg:px-0 justify-center pt-5 mb-[4rem] lg:mb-0">
             <h2 className="font-bold lg:text-2xl text-xl my-4 text-start">
               Card Details
             </h2>

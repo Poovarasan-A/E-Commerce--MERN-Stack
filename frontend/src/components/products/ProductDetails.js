@@ -5,7 +5,7 @@ import {
   addReview,
   getSingleProduct,
 } from "../../actions/productAction";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loader from "../layouts/Loader";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
@@ -38,7 +38,6 @@ const ProductDetails = () => {
   const { user } = useSelector((state) => state.authState);
   const { products } = useSelector((state) => state.productsState);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { id } = useParams();
   console.log(products);
 

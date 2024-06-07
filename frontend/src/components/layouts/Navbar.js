@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { logout } from "../../actions/authAction";
 import toast from "react-hot-toast";
 import { MdDashboard } from "react-icons/md";
+// import { IoSearchSharp } from "react-icons/io5";
 
 const Navbar = () => {
   const { isAuthenticated, user } = useSelector((state) => state.authState);
@@ -65,13 +66,22 @@ const Navbar = () => {
   }
 
   return (
-    <div className="bg-slate-400 w-full px-4 py-2 lg:h-[4.5rem] h-[6.5rem] top-0 pb-4 items-center fixed z-10 justify-around flex flex-col lg:flex-row md:flex-row gap-3 ">
+    <div className="bg-slate-200 w-full lg:px-4 py-2 lg:h-[4.5rem] h-[4rem] top-0 pb-2 items-center fixed z-10 justify-around flex lg:flex-row md:flex-row gap-3 shadow-lg">
       <Link to="/">
-        <img
-          className="cursor-pointer w-[7rem] lg:w-[10rem] md:w-[9rem]"
-          src="/images/whitelogo.png"
-          alt="wolfkart logo"
-        />
+        <div className="lg:flex hidden">
+          <img
+            className="cursor-pointer w-[7rem] lg:w-[10rem] md:w-[9rem]"
+            src="/images/whitelogo.png"
+            alt="wolfkart logo"
+          />
+        </div>
+        <div className="lg:hidden">
+          <img
+            className="cursor-pointer w-[3rem]  md:w-[9rem]"
+            src="/images/logo192.png"
+            alt="wolfkart logo"
+          />
+        </div>
       </Link>
 
       <select className="hidden lg:block w-[10rem] bg-transparent outline-none font-semibold cursor-pointer">
@@ -89,9 +99,15 @@ const Navbar = () => {
         <option>Shoes</option>
       </select>
       <div className="flex items-center justify-between lg:w-[45rem] gap-2 md:gap-7">
-        <Search />
+        <div>
+          <Search />
+        </div>
+        {/* <div className="text-2xl">
+          <IoSearchSharp />
+        </div> */}
+
         {user && isAuthenticated ? (
-          <Link to="/cart" className="relative">
+          <Link to="/cart" className="relative hidden lg:flex">
             <MdShoppingCart className="text-3xl cursor-pointer lg:ml-1 ml-4 hover:text-gray-800" />
             <span className="absolute w-5 h-5 flex items-center justify-center bottom-5 left-8 bg-white rounded-full">
               {cartItems.length}
@@ -111,7 +127,7 @@ const Navbar = () => {
       ) : (
         <button
           type="submit"
-          className="bg-slate-800 text-white w-[6rem] h-[2.2rem] px-3 py-1 rounded-3xl"
+          className="bg-slate-800 text-white w-[6rem] h-[2.2rem] px-3 py-1 rounded-3xl lg:flex hidden"
         >
           <Link to="/login">Login</Link>
         </button>

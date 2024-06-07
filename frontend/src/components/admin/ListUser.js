@@ -79,10 +79,10 @@ const ListUser = () => {
             </div>
             <hr />
             {users.map((user, index) => {
-              const avatar =
-                user.files.length > 0
-                  ? `http://localhost:8001/images/${user.files[0].fileName}`
-                  : "/images/default_avatar.png";
+              console.log(user);
+              const avatar = user.images
+                ? user.images
+                : "/images/default_avatar.png";
 
               return (
                 <div
@@ -96,12 +96,14 @@ const ListUser = () => {
                     </div>
                     <div className="w-full flex justify-around lg:justify-between ">
                       {/* image */}
-                      <div className="lg:w-[10%]  rounded-full">
-                        <img
-                          className="rounded-full lg:w-[2rem] w-[6rem]"
-                          src={avatar}
-                          alt="User"
-                        />
+                      <div className="lg:w-[10%] ">
+                        <div className="lg:w-[2rem] lg:h-[2rem] w-[6rem] h-[6rem] overflow-hidden rounded-full">
+                          <img
+                            className="rounded-full lg:w-[2rem] w-[6rem]"
+                            src={avatar}
+                            alt="User"
+                          />
+                        </div>
                       </div>
                       <div className="flex lg:w-full  flex-col lg:flex-row lg:justify-between">
                         {/* name */}
