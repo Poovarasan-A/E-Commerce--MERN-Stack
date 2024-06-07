@@ -48,20 +48,21 @@ const AddNewProduct = () => {
   const dispatch = useDispatch();
 
   const onImagesChange = (e) => {
-    const files = Array.from(e.target.files);
+    const images = Array.from(e.target.files);
 
-    files.forEach((file) => {
+    images.forEach((image) => {
       const reader = new FileReader();
 
       reader.onload = () => {
         if (reader.readyState === 2) {
           setImagesPreview((oldArray) => [...oldArray, reader.result]);
+          setProductImages((oldArray) => [...oldArray, image]);
         }
       };
 
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(image);
     });
-    setProductImages(e.target.files[0]);
+    // setProductImages(e.target.files[0]);
   };
 
   const submitHandler = (e) => {
@@ -74,11 +75,19 @@ const AddNewProduct = () => {
       seller,
       stock,
     };
-    const imageData = new FormData();
-    imageData.append("files", productImages);
+
+    // Combine productData and imageData into one FormData object
+    const combinedData = new FormData();
+    for (const key in formData) {
+      combinedData.append(key, formData[key]);
+    }
+
+    productImages.forEach((image) => {
+      combinedData.append("images", image);
+    });
 
     console.log(productImages);
-    dispatch(addNewProduct(formData, imageData));
+    dispatch(addNewProduct(combinedData));
   };
   useEffect(() => {
     if (isProductCreated) {

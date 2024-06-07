@@ -21,13 +21,10 @@ const userSchema = new mongoose.Schema({
     maxlength: [12, "Password cannot exceed 12 characters"],
     select: false,
   },
-  files: [
-    {
-      fileName: String,
-      filePath: String,
-      fileSize: String,
-    },
-  ],
+  images: {
+    type: String,
+  },
+
   role: {
     type: String,
     default: "user",

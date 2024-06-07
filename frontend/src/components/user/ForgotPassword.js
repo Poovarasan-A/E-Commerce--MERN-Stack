@@ -33,15 +33,15 @@ const ForgotPassword = () => {
   }, [message, error]);
   return (
     <Fragment>
-      <div className="w-full h-full flex justify-center items-center">
-        <div className="w-[50%] h-full ml-10">
+      <div className="w-full h-full flex justify-center items-center lg:pt-[4rem]">
+        <div className="lg:w-[50%] lg:flex hidden ml-10">
           <img
             className="bg-cover"
             src="/images/Wolfkart-login-page.jpg"
             alt=""
           />
         </div>
-        <div className="w-[50%] h-full flex items-center justify-center bg-white">
+        <div className="lg:w-[50%] h-full flex items-center justify-center bg-white">
           <div className="bg-white w-[30rem] h-[28rem] flex items-center justify-center rounded-md z-50">
             <form
               onSubmit={submitHandler}

@@ -5,7 +5,7 @@ import {
   addReview,
   getSingleProduct,
 } from "../../actions/productAction";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../layouts/Loader";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
@@ -38,6 +38,7 @@ const ProductDetails = () => {
   const { user } = useSelector((state) => state.authState);
   const { products } = useSelector((state) => state.productsState);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams();
   console.log(products);
 
@@ -60,12 +61,27 @@ const ProductDetails = () => {
     dispatch(addReview(formData));
   };
 
+  const addCartHandler = () => {
+    if (user) {
+      dispatch(addCartItem(product._id, quantity));
+      toast.success("Item Added to Cart!", {
+        position: "top-center",
+      });
+    } else {
+      toast.error("Please login to add cart", {
+        position: "top-center",
+      });
+    }
+  };
+
   useEffect(() => {
     if (isReviewSubmitted) {
       toast.success("Review Submitted successfully", {
         position: "top-center",
         onOpen: () => dispatch(clearReviewSubmitted()),
       });
+      dispatch(clearReviewSubmitted());
+      return;
     }
     if (error) {
       toast.error(error, {
@@ -186,17 +202,7 @@ const ProductDetails = () => {
                   : "bg-slate-800 hover:bg-gray-800"
               }`}
               disabled={product.stock === 0}
-              onClick={() => {
-                user
-                  ? dispatch(addCartItem(product._id, quantity))(
-                      toast.success("Item Added to Cart!", {
-                        position: "top-center",
-                      })
-                    )
-                  : toast.error("Please login to add cart", {
-                      position: "top-center",
-                    });
-              }}
+              onClick={addCartHandler}
             >
               Add to Cart
             </button>

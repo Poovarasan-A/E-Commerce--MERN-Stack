@@ -11,17 +11,18 @@ const registerUser = async (req, res, next) => {
     BASE_URL = `${req.protocol}://${req.get("host")}`;
   }
 
-  const files = req.files.map((file) => ({
-    fileName: file.filename,
-    filePath: file.path,
-    fileSize: file.size,
-  }));
+  let images;
+  // const BACKEND_URL = `http://127.0.0.1:8001`;
+
+  if (req.file) {
+    images = `${BASE_URL}/images/${req.file.originalname}`;
+  }
 
   const user = await User.create({
     name,
     email,
     password,
-    files,
+    images,
   });
 
   sendToken(user, 201, res);
@@ -159,12 +160,16 @@ const updateProfile = async (req, res, next) => {
     email: req.body.email,
   };
   let avatar;
+  let BASE_URL = process.env.BACKEND_URL;
+  if (process.env.NODE_ENV === "production") {
+    BASE_URL = `${req.protocol}://${req.get("host")}`;
+  }
 
   if (req.file) {
-    avatar = `${BASE_URL}://${req.host}/uploads/user/${req.file.originalname}`;
+    avatar = `${BASE_URL}://${req.host}/images/${req.file.originalname}`;
     newUserData = { ...newUserData, avatar };
   }
-  console.log(req.user.id);
+
   const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,
     runValidators: true,

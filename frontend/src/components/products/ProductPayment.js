@@ -169,7 +169,7 @@ const ProductPayment = () => {
                     <div className="w-full flex justify-between py-6">
                       <div className="lg:w-[40%] flex gap-4">
                         <img
-                          src={`http://localhost:8001/images/${item.file}`}
+                          src={item.image}
                           className="border-2 border-gray-400"
                           width={100}
                           height={100}

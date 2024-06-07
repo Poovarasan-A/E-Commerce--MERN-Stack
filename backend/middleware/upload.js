@@ -22,37 +22,4 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// const validateFileUpload = (req, res, next) => {
-//   upload.array("files", 5)(req, res, (err) => {
-//     if (err) {
-//       return res.status(400).json({
-//         error: err,
-//         message: "More than 5 files are not allowed",
-//       });
-//     }
-//     if (!req.files) {
-//       return res.status(400).json({
-//         message: "Files are required",
-//       });
-//     }
-
-//     const files = req.files;
-//     console.log(files);
-//     const errors = [];
-
-//     files.forEach((file) => {
-//       const allowedType = ["image/png", "image/jpg", "image/jpeg"];
-//     });
-//     if (errors.length > 0) {
-//       files.forEach((file) => {
-//         fs.unlinkSync(file.path);
-//       });
-//       return res.status(400).json(errors);
-//     }
-
-//     req.files = files;
-//     next();
-//   });
-// };
-
 export default upload;

@@ -16,8 +16,8 @@ const MyProfile = () => {
     if (user) {
       setName(user.name);
       setEmail(user.email);
-      if (user.files && user.files[0] && user.files[0].fileName) {
-        setAvatar(`http://localhost:8001/images/${user.files[0].fileName}`);
+      if (user && user.images) {
+        setAvatar(user.images);
       } else {
         setAvatar("/images/default_avatar.png");
       }
@@ -31,12 +31,12 @@ const MyProfile = () => {
   return (
     <Fragment>
       {user && (
-        <div className="w-full h-full p-8 pt-[6rem] bg-white">
+        <div className="w-full h-full p-8 lg:pt-[6rem] pt-[8rem] bg-white">
           <div className="w-full">
             <h2 className="font-bold text-2xl mb-10">My Profile</h2>
           </div>
-          <form className="flex h-full">
-            <div className="w-[30%] h-full flex flex-col items-center">
+          <form className="lg:flex lg:h-full">
+            <div className="lg:w-[30%] lg:h-full flex flex-col items-center">
               <div className="w-[15rem] h-[15rem] rounded-full overflow-hidden bg-white">
                 <img
                   src={avatar || "/images/default_avatar.png"}
@@ -52,7 +52,7 @@ const MyProfile = () => {
                   Edit Profile
                 </button>
                 <button
-                  onClick={() => navigate("/updatepassword")}
+                  onClick={() => navigate("/change/password")}
                   className=" bg-blue-500 text-white font-semibold text-lg py-2 px-8 rounded-sm hover:bg-blue-400"
                 >
                   Change Password
@@ -60,33 +60,33 @@ const MyProfile = () => {
               </div>
             </div>
             {/* Name & email */}
-            <div className="w-[40%] px-5 h-full">
-              <div className="flex flex-col mb-8">
+            <div className="lg:w-[40%] px-5 h-full py-10 lg:py-0">
+              <div className="w-full lg:w-[20rem] flex flex-col mb-8">
                 <label className="font-semibold text-lg mb-2">Name</label>
                 <input
                   type="name"
                   disabled={true}
-                  className="capitalize py-2 px-2 bg-gray-200 w-[18rem] select-none"
+                  className="capitalize py-2 px-2 bg-gray-200  select-none"
                   name="name"
                   onChange={(e) => setName(e.target.value)}
                   value={name}
                 />
               </div>
-              <div className="flex flex-col my-8">
+              <div className="w-full lg:w-[20rem] flex flex-col my-8">
                 <label className="font-semibold text-lg mb-2">Email</label>
                 <input
                   type="email"
                   disabled={true}
-                  className="py-2 px-2 bg-gray-200 w-[18rem]"
+                  className="py-2 px-2 bg-gray-200 "
                   onChange={(e) => setEmail(e.target.value)}
                   name="email"
                   value={email}
                 />
               </div>
-              <div className="flex flex-col my-10">
+              <div className="w-full lg:w-[20rem] flex  my-10 justify-between">
                 <label className="font-semibold text-lg">Joined on</label>
 
-                <h5 className="capitalize pt-1">
+                <h5 className="capitalize text-lg">
                   Since {String(user.createdAt).substring(0, 4)}
                 </h5>
               </div>

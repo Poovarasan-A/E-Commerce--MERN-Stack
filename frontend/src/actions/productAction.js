@@ -69,16 +69,9 @@ export const getAdminProducts = async (dispatch) => {
   }
 };
 
-export const addNewProduct = (productData, imageData) => async (dispatch) => {
+export const addNewProduct = (combinedData) => async (dispatch) => {
   try {
     dispatch(newProductRequest());
-
-    // Combine productData and imageData into one FormData object
-    const combinedData = new FormData();
-    for (const key in productData) {
-      combinedData.append(key, productData[key]);
-    }
-    combinedData.append("files", imageData.get("files"));
 
     const config = {
       headers: {

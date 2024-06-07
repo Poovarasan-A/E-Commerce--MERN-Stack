@@ -34,7 +34,7 @@ const Register = () => {
     formData.append("email", userData.email);
     formData.append("password", userData.password);
 
-    formData.append("files", image);
+    formData.append("images", image);
     console.log(image);
 
     dispatch(newUser(formData));
@@ -55,8 +55,7 @@ const Register = () => {
   return (
     <div>
       <div className="w-full h-full lg:flex lg:flex-row flex-col justify-center items-center ">
-        
-      <div className="w-full lg:hidden flex items-center justify-center h-[10%] my-14">
+        <div className="w-full lg:hidden flex items-center justify-center h-[10%] my-14">
           <img
             className="bg-cover"
             src="/images/wolfkart.png"

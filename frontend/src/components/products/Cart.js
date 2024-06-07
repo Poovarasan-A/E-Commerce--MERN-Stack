@@ -65,7 +65,7 @@ const Cart = () => {
                   <div className="w-[100%] flex py-6 px-2 justify-between gap-4 lg:gap-0">
                     <div className="lg:w-[40%] w-[50%] flex items-center gap-4">
                       <img
-                        src={`http://localhost:8001/images/${item.file}`}
+                        src={item.image}
                         className="border-2 border-gray-400"
                         width={100}
                         height={100}

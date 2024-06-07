@@ -26,7 +26,6 @@ const ListProducts = () => {
   );
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const open = () => {
     setShow(false);
   };
@@ -93,10 +92,6 @@ const ListProducts = () => {
             </div>
             <hr />
             {products.map((product, index) => {
-              const productImage =
-                product.files.length > 0
-                  ? `http://localhost:8001/images/${product.files[0].fileName}`
-                  : "";
               return (
                 <div
                   className="w-full lg:flex items-center mt-2 gap-1 px-4 lg:px-2 py-3 bg-white"
@@ -111,7 +106,12 @@ const ListProducts = () => {
                       {/* image */}
                       <div className="lg:w-[12%]">
                         <div className="w-[8rem] lg:w-[4rem] flex items-center justify-center">
-                          <img src={productImage} alt={product.name} />
+                          {product && (
+                            <img
+                              src={product.images[0].image}
+                              alt={product.name}
+                            />
+                          )}
                         </div>
                       </div>
 

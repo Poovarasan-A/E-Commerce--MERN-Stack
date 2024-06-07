@@ -52,8 +52,8 @@ const Navbar = () => {
 
   useEffect(() => {
     if (user) {
-      if (user.files && user.files[0] && user.files[0].fileName) {
-        setAvatar(`http://localhost:8001/images/${user.files[0].fileName}`);
+      if (user && user.images) {
+        setAvatar(user.images);
       } else {
         setAvatar("/images/default_avatar.png");
       }
@@ -119,7 +119,7 @@ const Navbar = () => {
       {/* profile */}
       {isAuthenticated ? (
         <div className="hidden lg:flex items-center h-full w-[8rem] gap-1 relative cursor-pointer">
-          <div className="w-[2.5rem] h-[2.5rem] rounded-full hover:border-2 border-white">
+          <div className="w-[2.5rem] h-[2.5rem] overflow-hidden rounded-full hover:border-2 border-white">
             <img className="rounded-full" src={avatar} alt="user" />
           </div>
           {open ? (
