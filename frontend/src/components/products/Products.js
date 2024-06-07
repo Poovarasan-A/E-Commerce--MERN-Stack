@@ -22,7 +22,12 @@ const Products = ({ product }) => {
     <div>
       <section className="  box-border overflow-hidden whitespace-nowrap w-[11rem] md:w-[12rem] lg:w-[14rem] my-1 lg:my-3 flex flex-col items-center gap-1 lg:gap-3">
         <div className="lg:w-[14rem] bg-white lg:h-[16rem] flex items-center justify-center">
-          <img width={180} height={180} src={productImage} alt={product.name} />
+          <img
+            width={180}
+            height={180}
+            src={product.images[0].image}
+            alt={product.name}
+          />
         </div>
 
         <div className="flex flex-col w-full items-center text-sm lg:text-md">

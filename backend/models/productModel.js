@@ -19,11 +19,12 @@ const productSchema = new mongoose.Schema({
     type: String,
     default: 0,
   },
-  files: [
+  images: [
     {
-      fileName: String,
-      filePath: String,
-      fileSize: String,
+      image: {
+        type: String,
+        required: [true, "Please add product images"],
+      },
     },
   ],
   category: {

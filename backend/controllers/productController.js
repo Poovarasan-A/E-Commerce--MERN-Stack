@@ -25,20 +25,25 @@ const getProducts = async (req, res, next) => {
 // POST new product
 const addNewProducts = async (req, res) => {
   try {
+    let images = [];
+    const BACKEND_URL = `http://127.0.0.1:8001`;
+
+    if (req.files.length > 0) {
+      req.files.forEach((file) => {
+        let url = `${BACKEND_URL}/images/${file.originalname}`;
+        images.push({ image: url });
+      });
+    }
+
+    req.body.images = images;
+
     req.body.user = req.user.id;
 
-    const files = req.files.map((file) => ({
-      fileName: file.filename,
-      filePath: file.path,
-      fileSize: file.size,
-    }));
+    // const productData = {
+    //   ...req.body,
+    // };
 
-    const productData = {
-      ...req.body,
-      files: files, // Add files information to the product data
-    };
-
-    const product = await Product.create(productData);
+    const product = await Product.create(req.body);
 
     res.status(201).json({
       success: true,

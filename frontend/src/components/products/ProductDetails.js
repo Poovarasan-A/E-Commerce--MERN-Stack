@@ -114,13 +114,10 @@ const ProductDetails = () => {
             className="w-[31rem] h-[40rem] bg-white flex flex-col pt-[2rem]"
             dynamicHeight
           >
-            {product.files &&
-              product.files.map((file) => (
-                <div key={file._id}>
-                  <img
-                    src={`http://localhost:8001/images/${file.fileName}`}
-                    alt="product"
-                  />
+            {product.images &&
+              product.images.map((image) => (
+                <div key={image._id}>
+                  <img src={image.image} alt="product" />
                 </div>
               ))}
           </Carousel>

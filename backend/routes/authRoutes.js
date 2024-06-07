@@ -21,16 +21,14 @@ import validateFileUpload from "../middleware/upload.js";
 
 const router = express.Router();
 
-router.route("/register").post(validateFileUpload, registerUser);
+router.route("/register").post(registerUser);
 router.route("/login").post(loginUser);
 router.route("/logout").get(logoutUser);
 router.route("/password/forgot").post(forgotPassword);
 router.route("/password/reset/:token").post(resetPassword);
 router.route("/myprofile").get(isAuthenticatedUser, getUserProfile);
 router.route("/change/password").put(isAuthenticatedUser, changePassword);
-router
-  .route("/updateprofile")
-  .put(isAuthenticatedUser, validateFileUpload, updateProfile);
+router.route("/updateprofile").put(isAuthenticatedUser, updateProfile);
 
 //Admin Routes
 

@@ -15,7 +15,8 @@ import {
   authorizeRoles,
   isAuthenticatedUser,
 } from "../middleware/authenticate.js";
-import validateFileUpload from "../middleware/upload.js";
+// import validateFileUpload from "../middleware/upload.js";
+import upload from "../middleware/upload.js";
 
 const router = express.Router();
 
@@ -34,7 +35,7 @@ router
   .post(
     isAuthenticatedUser,
     authorizeRoles("admin"),
-    validateFileUpload,
+    upload.array("images"),
     addNewProducts
   );
 router
