@@ -26,7 +26,9 @@ const Home = () => {
         <>
           <MetaData title={"Home"} />
           <div className=" my-2 w-full flex flex-col box-border pt-[4rem] lg:pt-[4.5rem] bg-white overflow-x-hidden lg:px-10">
-            <CategoryTab />
+            <div className="lg:flex hidden">
+              <CategoryTab />
+            </div>
 
             <Carousel
               className="lg:w-full flex flex-col pt-3"
