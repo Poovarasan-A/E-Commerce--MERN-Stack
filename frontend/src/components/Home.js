@@ -29,7 +29,7 @@ const Home = () => {
             <CategoryTab />
 
             <Carousel
-              className="lg:w-full lg:h-full flex flex-col pt-3"
+              className="lg:w-full flex flex-col pt-3"
               autoPlay
               infiniteLoop
               showThumbs={false}
