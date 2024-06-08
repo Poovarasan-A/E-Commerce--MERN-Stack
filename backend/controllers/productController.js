@@ -33,7 +33,7 @@ const addNewProducts = async (req, res) => {
 
     if (req.files.length > 0) {
       req.files.forEach((file) => {
-        let url = `${BACKEND_URL}/images/${file.originalname}`;
+        let url = `${BASE_URL}/images/${file.originalname}`;
         images.push({ image: url });
       });
     }

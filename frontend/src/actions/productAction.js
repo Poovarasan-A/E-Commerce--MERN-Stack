@@ -80,7 +80,7 @@ export const addNewProduct = (combinedData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/v1/admin/product/add",
+      `/api/v1/admin/product/add`,
       combinedData,
       config
     );

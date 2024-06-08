@@ -86,7 +86,6 @@ const AddNewProduct = () => {
       combinedData.append("images", image);
     });
 
-    console.log(productImages);
     dispatch(addNewProduct(combinedData));
   };
   useEffect(() => {
