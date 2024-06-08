@@ -36,31 +36,36 @@ const MyOrders = () => {
 
   return (
     <Fragment>
-      <div className="w-full h-screen pt-[4rem] px-20">
+      <div className="w-full h-screen pt-[4rem] lg:px-20 px-4 text-sm lg:text-md">
         <h2 className="font-bold text-2xl py-5">My Orders</h2>
         {orders.length > 0 ? (
           orders.map((order) => {
             const deliveredDate = formatDate(order.deliveredAt);
 
             return (
-              <div key={order._id} className="flex w-full">
-                <div className="w-[70%] bg-neutral-200 bg-opacity-70 flex px-4 py-2 justify-between ">
+              <div key={order._id} className="lg:flex w-full">
+                <div className="lg:w-[60%] w-full bg-neutral-200 bg-opacity-70 flex lg:px-4 px-2 py-2 justify-between ">
                   {order.orderItems.map((item, index) => (
                     <div
                       key={index}
-                      className="w-[60%] flex gap-4 justify-between items-center"
+                      className="lg:w-[60%] flex gap-4 justify-between items-center"
                     >
                       <div className="flex gap-4">
                         <div>
                           <img src={item.file} alt={item.name} width="100" />
                         </div>
-                        <div className="flex flex-col gap-2">
-                          <p className="font-bold">{item.name}</p>
-                          <p>Qty - {item.quantity}</p>
+                        <div className="flex flex-col gap-4">
+                          <div className="flex flex-col gap-2">
+                            <p className="font-bold">{item.name}</p>
+                            <p>Qty - {item.quantity}</p>
+                          </div>
+                          <div>
+                            <p className="font-semibold">
+                              {" "}
+                              ₹&nbsp;{item.price}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                      <div>
-                        <p className="font-semibold"> ₹&nbsp;{item.price}</p>
                       </div>
                     </div>
                   ))}
@@ -70,7 +75,7 @@ const MyOrders = () => {
                   </p>
                 </div>
                 <hr />
-                <div className="w-[30%] border-2 border-neutral-200 h-full flex  flex-col justify-center px-4 py-2 mr-2">
+                <div className="lg:w-[30%] border-2 border-neutral-200 h-full flex  flex-col justify-center px-4 py-2 lg:mr-2">
                   <div className="pb-2">
                     <p className="font-semibold pb-1"> Order ID</p> {order._id}
                   </div>
