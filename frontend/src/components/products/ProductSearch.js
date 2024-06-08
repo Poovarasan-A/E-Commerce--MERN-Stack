@@ -27,14 +27,14 @@ const ProductSearch = () => {
     "Mobile Phones",
     "Laptops",
     "Accessories",
-    "Headphones",
-    "Food",
+    "Health",
     "Books",
-    "Clothes/Shoes",
-    "Beauty/Health",
+    "Clothes",
+    "Beauty",
     "Sports",
-    "Outdoor",
-    "Home",
+    "Toys & Baby",
+    "Appliances",
+    "Kitchen",
   ];
 
   const clearFilters = () => {

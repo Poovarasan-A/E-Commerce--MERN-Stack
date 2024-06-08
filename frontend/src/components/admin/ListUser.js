@@ -79,7 +79,6 @@ const ListUser = () => {
             </div>
             <hr />
             {users.map((user, index) => {
-              console.log(user);
               const avatar = user.images
                 ? user.images
                 : "/images/default_avatar.png";

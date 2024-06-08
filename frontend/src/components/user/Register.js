@@ -35,7 +35,6 @@ const Register = () => {
     formData.append("password", userData.password);
 
     formData.append("images", image);
-    console.log(image);
 
     dispatch(newUser(formData));
   };

@@ -36,10 +36,9 @@ const ProductDetails = () => {
     error,
   } = useSelector((state) => state.productState);
   const { user } = useSelector((state) => state.authState);
-  const { products } = useSelector((state) => state.productsState);
+  // const { products } = useSelector((state) => state.productsState);
   const dispatch = useDispatch();
   const { id } = useParams();
-  console.log(products);
 
   const increaseQty = () => {
     if (product.stock === 0 || quantity >= product.stock) {

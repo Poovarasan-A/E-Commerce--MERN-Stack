@@ -6,12 +6,23 @@ class APIFeatures {
   search() {
     let keyword = this.queryStr.keyword
       ? {
-          name: {
-            $regex: this.queryStr.keyword,
-            $options: "i",
-          },
+          $or: [
+            {
+              name: {
+                $regex: this.queryStr.keyword,
+                $options: "i",
+              },
+            },
+            {
+              category: {
+                $regex: this.queryStr.keyword,
+                $options: "i",
+              },
+            },
+          ],
         }
       : {};
+
     this.query.find({ ...keyword });
     return this;
   }
@@ -25,7 +36,6 @@ class APIFeatures {
     //{{base_url}}/api/v1/products?price[lte]=150.32
     let queryStr = JSON.stringify(queryStrCopy);
     queryStr = queryStr.replace(/\b(gt|gte|lt|lte)/g, (match) => `$${match}`);
-    console.log(queryStr);
 
     this.query.find(JSON.parse(queryStr));
 

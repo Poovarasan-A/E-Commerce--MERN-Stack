@@ -119,7 +119,6 @@ const resetPassword = async (req, res, next) => {
   }
 
   user.password = req.body.password;
-  console.log(user.password);
   user.resetPasswordToken = undefined;
   user.resetPasswordTokenExpire = undefined;
   await user.save({ validateBeforeSave: false });
@@ -212,7 +211,6 @@ const updateUser = async (req, res, next) => {
     email: req.body.email,
     role: req.body.role,
   };
-  console.log(req.params.id);
   const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
     new: true,
     runValidators: true,

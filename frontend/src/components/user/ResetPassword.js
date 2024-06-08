@@ -20,7 +20,6 @@ const ResetPassword = () => {
       password,
       confirmPassword,
     };
-    console.log(formData);
     dispatch(resetPassword(formData, token));
   };
 

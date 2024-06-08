@@ -34,14 +34,14 @@ const AddNewProduct = () => {
     "Mobile Phones",
     "Laptops",
     "Accessories",
-    "Headphones",
-    "Food",
+    "Health",
     "Books",
-    "Clothes/Shoes",
-    "Beauty/Health",
+    "Clothes",
+    "Beauty",
     "Sports",
-    "Outdoor",
-    "Home",
+    "Toys & Baby",
+    "Appliances",
+    "Kitchen",
   ];
 
   const navigate = useNavigate();
@@ -107,7 +107,7 @@ const AddNewProduct = () => {
   }, [isProductCreated, dispatch, error, navigate]);
 
   return (
-    <div className="w-full h-full flex justify-center items-center mb-10 lg:mb-0">
+    <div className="w-full h-full flex justify-center items-center mb-[5rem] lg:mb-0">
       <div>
         <Sidebar show={show} setShow={setShow} />
       </div>

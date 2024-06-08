@@ -6,6 +6,7 @@ import Loader from "./layouts/Loader";
 import MetaData from "./layouts/MetaData";
 import { Carousel } from "react-responsive-carousel";
 import Footer from "./layouts/Footer";
+import CategoryTab from "./category/CategoryTab";
 // import ReactPaginate from "react-paginate";
 
 const Home = () => {
@@ -13,7 +14,6 @@ const Home = () => {
   const { products, loading, error } = useSelector(
     (state) => state.productsState
   );
-  console.log(products);
   useEffect(() => {
     dispatch(getAllProducts(null, null, null, null));
   }, [dispatch, error]);
@@ -25,7 +25,9 @@ const Home = () => {
       ) : (
         <>
           <MetaData title={"Home"} />
-          <div className=" my-2 w-full flex flex-col box-border pt-[4rem] lg:pt-[4rem] bg-white overflow-x-hidden lg:px-10">
+          <div className=" my-2 w-full flex flex-col box-border pt-[4rem] lg:pt-[4.5rem] bg-white overflow-x-hidden lg:px-10">
+            <CategoryTab />
+
             <Carousel
               className="lg:w-full lg:h-full flex flex-col pt-3"
               autoPlay

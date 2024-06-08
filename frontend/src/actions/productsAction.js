@@ -24,7 +24,6 @@ export const getAllProducts =
         link += `&rating=${rating}`;
       }
       const { data } = await axios.get(link);
-      console.log(data);
       dispatch(productsSuccess(data));
     } catch (error) {
       dispatch(productsFail(error.response.data.message));

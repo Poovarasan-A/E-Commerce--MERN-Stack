@@ -35,6 +35,7 @@ import OrderUpdate from "./components/admin/OrderUpdate";
 import ListUser from "./components/admin/ListUser";
 import UserUpdate from "./components/admin/UserUpdate";
 import MobNav from "./components/layouts/MobNav";
+import CategoryList from "./components/category/CategoryList";
 import CategoryTab from "./components/category/CategoryTab";
 
 const App = () => {
@@ -76,6 +77,7 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/search/:keyword" element={<ProductSearch />} />
               <Route path="/category" element={<CategoryTab />} />
+              <Route path="/category/:keyword" element={<CategoryList />} />
               <Route path="/product/:id" element={<ProductDetails />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />

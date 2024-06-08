@@ -71,7 +71,7 @@ const Navbar = () => {
         <div className="lg:flex hidden">
           <img
             className="cursor-pointer w-[7rem] lg:w-[10rem] md:w-[9rem]"
-            src="/images/whitelogo.png"
+            src="/images/wolfkart.png"
             alt="wolfkart logo"
           />
         </div>
@@ -84,20 +84,6 @@ const Navbar = () => {
         </div>
       </Link>
 
-      <select className="hidden lg:block w-[10rem] bg-transparent outline-none font-semibold cursor-pointer">
-        <option>All Categories</option>
-        <option>Mobile Phones</option>
-        <option>Electronics</option>
-        <option>Clothes</option>
-        <option>Laptops</option>
-        <option>Accessories</option>
-        <option>Books</option>
-        <option>Beauty/Health</option>
-        <option>Sports</option>
-        <option>Outdoor</option>
-        <option>Home</option>
-        <option>Shoes</option>
-      </select>
       <div className="flex items-center justify-between lg:w-[45rem] gap-2 md:gap-7">
         <div>
           <Search />

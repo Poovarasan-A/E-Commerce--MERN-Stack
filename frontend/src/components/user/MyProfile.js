@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Link, useNavigate } from "react-router-dom";
 import Loader from "../layouts/Loader";
+import { logout } from "../../actions/authAction";
+import toast from "react-hot-toast";
 
 const MyProfile = () => {
   const [name, setName] = useState("");
@@ -10,6 +12,12 @@ const MyProfile = () => {
   const [avatar, setAvatar] = useState("");
   const { user, loading } = useSelector((state) => state.authState);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(logout);
+    toast.success("LoggedOut Successfully !", { position: "top-center" });
+  };
 
   // const { shippingInfo } = useSelector((state) => state.cartState);
   useEffect(() => {
@@ -31,7 +39,7 @@ const MyProfile = () => {
   return (
     <div className="my-[3.5rem] lg:my-0">
       {user && (
-        <div className="w-full h-full p-8 lg:pt-[4rem] pt-[8rem]bg-white">
+        <div className="w-full h-full p-8 lg:pt-[5rem] pt-[8rem]bg-white">
           <div className="w-full">
             <h2 className="font-bold text-2xl mb-10">My Profile</h2>
           </div>
@@ -60,7 +68,7 @@ const MyProfile = () => {
               </div>
             </div>
             {/* Name & email */}
-            <div className="lg:w-[40%] px-5 h-full py-10 lg:py-0  ">
+            <div className="lg:w-[40%] px-5 py-10 lg:py-0  ">
               <div className="w-full lg:w-[20rem] flex flex-col mb-8">
                 <label className="font-semibold text-lg mb-2">Name</label>
                 <input
@@ -97,6 +105,28 @@ const MyProfile = () => {
                 >
                   My Orders
                 </Link>
+              </div>
+              <div className="py-5">
+                <button
+                  onClick={() => logoutHandler()}
+                  className=" text-red-400  font-semibold text-lg py-2 px-8 rounded-sm hover:text-red-600 hover:bg-red-100 "
+                >
+                  Logout
+                </button>
+              </div>
+              <div>
+                {user.role === "admin" && (
+                  <div
+                    className="flex items-center font-semibold hover:text-white"
+                    onClick={() => {
+                      navigate("/admin/dashboard");
+                    }}
+                  >
+                    <button className="bg-neutral-400 text-white font-semibold text-lg py-2 px-8 rounded-sm hover:bg-neutral-500">
+                      Dashboard
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
             {/* Address Information */}

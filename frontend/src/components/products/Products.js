@@ -5,10 +5,9 @@ const Products = ({ product }) => {
   return (
     <div>
       <section className="  box-border overflow-hidden whitespace-nowrap w-[11rem] md:w-[12rem] lg:w-[14rem] my-1 lg:my-3 flex flex-col items-center gap-1 lg:gap-3">
-        <div className="lg:w-[14rem] bg-white h-[15rem] lg:h-[16rem] flex items-center justify-center">
+        <div className="lg:w-[14rem] w-[12rem] bg-white h-[15rem] lg:h-[16rem] flex items-center justify-center">
           <img
-            width={180}
-            height={180}
+            className="lg:w-[9rem] w-[9rem]"
             src={product.images[0].image}
             alt={product.name}
           />
