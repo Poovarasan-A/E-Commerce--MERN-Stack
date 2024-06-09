@@ -102,6 +102,7 @@ const AddNewProduct = () => {
         position: "top-center",
         onOpen: () => dispatch(clearProductErr()),
       });
+      dispatch(clearProductErr());
       return;
     }
   }, [isProductCreated, dispatch, error, navigate]);
