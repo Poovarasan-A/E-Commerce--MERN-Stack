@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 const Products = ({ product }) => {
   return (
     <div>
-      <section className="  box-border overflow-hidden whitespace-nowrap w-[10rem] md:w-[12rem] lg:w-[13rem] lg:h-[16rem] my-1 lg:my-3 flex flex-col items-center gap-1 lg:gap-3 bg-white rounded-md shadow-sm">
-        <div className="lg:w-[12rem] w-[10rem] bg-white flex items-center justify-center lg:h-[14rem] h-[10rem]">
+      <Link
+        to={`/product/${product._id}`}
+        className="  box-border overflow-hidden whitespace-nowrap w-[10rem] md:w-[12rem] lg:w-[13rem] lg:h-[16rem] my-1 lg:my-3 flex flex-col items-center gap-1 lg:gap-3 bg-white rounded-md shadow-sm"
+      >
+        <div className="lg:w-[12rem] w-[11rem] bg-white flex items-center justify-center lg:h-[14rem] h-[10rem]">
           <img
             className="lg:w-[9rem] w-[6rem]"
             src={product.images[0].image}
@@ -21,7 +24,7 @@ const Products = ({ product }) => {
             <h5 className="font-semibold text-gray-700">Rs.{product.price}</h5>
           </div>
         </div>
-      </section>
+      </Link>
     </div>
   );
 };

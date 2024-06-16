@@ -36,7 +36,7 @@ const Cart = () => {
   return (
     <div className="w-[100%] lg:h-full relative lg:mt-[4rem] my-[4rem] lg:my-0">
       {items.length === 0 ? (
-        <div className="w-full lg:h-full flex items-center justify-center">
+        <div className="w-full h-full flex items-center justify-center mt-[20rem] lg:mt-0">
           <h2 className="text-xl font-semibold text-center ">
             Your Cart is Empty
           </h2>

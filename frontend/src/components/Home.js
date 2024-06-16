@@ -63,7 +63,7 @@ const Home = () => {
                 </div>
               </div>
             </Carousel>
-            <h2 className="font-bold text-2xl my-3 pl-2 lg:pl-0">
+            <h2 className="font-bold text-2xl my-3 pl-6 lg:pl-0">
               Explore Products
             </h2>
             <div className="w-full h-full flex flex-wrap justify-center gap-5 bg-neutral-200 bg-opacity-70 items-center pt-2">

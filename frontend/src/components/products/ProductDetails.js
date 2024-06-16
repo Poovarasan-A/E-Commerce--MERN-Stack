@@ -92,27 +92,11 @@ const ProductDetails = () => {
 
   useEffect(() => {
     dispatch(getSingleProduct(id));
-    // dispatch(getAllProducts(null, null, null, null));
-    // console.log(products);
-
-    // if (product.category) {
-    //   const relatedProducts = products.filter(
-    //     (prod) => prod.category === product.category
-    //   );
-    //   const relatedProduct = relatedProducts.category;
-    //   console.log(relatedProducts);
-    //   dispatch(addRelatedProducts(relatedProducts));
-    // }
 
     return () => {
       dispatch(clearProduct());
     };
   }, [dispatch, id]);
-
-  // useEffect(() => {
-  //   dispatch(getSingleProduct(id));
-  //
-  // }, [dispatch, id]);
 
   if (loading) {
     return <Loader />;
@@ -123,7 +107,7 @@ const ProductDetails = () => {
       <MetaData title={product.name} />
 
       <div className="w-full lg:h-screen lg:flex pt-[4rem] bg-white">
-        <div className="w-full lg:w-[40%] flex items-centerbg-neutral-200 bg-opacity-70 justify-center ">
+        <div className="w-full lg:w-[40%] flex items-center bg-neutral-200 bg-opacity-70 justify-center ">
           <Carousel
             className="w-[31rem] h-[40rem] bg-white flex flex-col pt-[2rem]"
             dynamicHeight
@@ -137,7 +121,7 @@ const ProductDetails = () => {
           </Carousel>
         </div>
 
-        <div className="w-full lg:w-[42%] bg-white px-10 pt-8">
+        <div className="w-full lg:w-[42%] bg-white lg:px-10 px-4 lg:pt-8">
           <h5 className="text-3xl font-bold my-5">{product.name}</h5>
           <p className="text-md">{product.description}</p>
           <p className="text-2xl font-semibold my-5">Rs.{product.price}</p>

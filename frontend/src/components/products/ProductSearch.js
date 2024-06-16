@@ -54,11 +54,11 @@ const ProductSearch = () => {
         <>
           <MetaData title={"search"} />
           <div className=" my-2 pt-[4rem] h-screen  w-full flex box-border bg-neutral-200 bg-opacity-70 overflow-x-hidden">
-            <div className="w-[80%]">
+            <div className="lg:w-[80%]">
               <h2 className="font-bold text-2xl ml-10 my-4">
                 Search Products ({count})
               </h2>
-              <div className="w-full h-full ml-5 flex flex-wrap gap-5">
+              <div className="w-full lg:h-full ml-5 flex flex-wrap gap-5 ">
                 {products &&
                   products.map((product) => (
                     <Products key={product._id} product={product} />
@@ -66,7 +66,7 @@ const ProductSearch = () => {
               </div>
             </div>
             {/* Filter Tab */}
-            <div className="w-[20%] h-full bg-white py-4 px-4 fixed top-[4rem] right-0 ">
+            <div className="w-[20%] h-full bg-white py-4 px-4 fixed top-[4rem] right-0 hidden lg:block">
               <p
                 className="text-right text-sm cursor-pointer"
                 onClick={clearFilters}
@@ -87,10 +87,10 @@ const ProductSearch = () => {
                     range={true}
                     marks={{
                       1: "₹100",
-                      1000: "₹1000000",
+                      1000: "₹10000",
                     }}
                     min={1}
-                    max={1000000}
+                    max={1000}
                     defaultValue={price}
                     onChange={(price) => {
                       setPrice(price);
