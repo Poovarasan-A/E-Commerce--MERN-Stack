@@ -19,6 +19,7 @@ import { HiShoppingCart } from "react-icons/hi";
 import { FaUsers } from "react-icons/fa";
 import { GiCash } from "react-icons/gi";
 import { HiMenuAlt1 } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 ChartJS.register(BarController, BarElement, CategoryScale, LinearScale);
 
@@ -85,30 +86,39 @@ const AdminDashboard = () => {
                 <b className="font-bold text-2xl">₹{totalAmount.toFixed(2)}</b>
               </div>
             </div>
-            <div className="flex flex-col items-center lg:w-[16rem] lg:h-[9rem] w-[12rem] h-[8rem] shadow-sm rounded-3xl bg-green-500 relative">
+            <Link
+              to="/admin/products"
+              className="flex flex-col items-center lg:w-[16rem] lg:h-[9rem] w-[12rem] h-[8rem] shadow-sm rounded-3xl bg-green-500 relative"
+            >
               <h2 className=" text-xl font-bold py-4">Products</h2>
               <FaBasketShopping className="text-[3.5rem] opacity-30 top-14 left-5 absolute" />
               <div className="flex w-full   px-14 justify-end pb-5 h-[50%] items-center">
                 <b className="font-bold text-2xl">{products.length}</b>
               </div>
-            </div>
+            </Link>
           </div>
           {/* Line 2 mob */}
           <div className="w-full flex flex-row gap-2 lg:gap-0 lg:justify-around">
-            <div className="flex flex-col items-center lg:w-[16rem] lg:h-[9rem] w-[12rem] h-[8rem] shadow-sm rounded-3xl bg-blue-500 relative">
+            <Link
+              to="/admin/orders"
+              className="flex flex-col items-center lg:w-[16rem] lg:h-[9rem] w-[12rem] h-[8rem] shadow-sm rounded-3xl bg-blue-500 relative"
+            >
               <h2 className=" text-xl font-bold py-4">Orders</h2>
               <HiShoppingCart className="text-[3.5rem] opacity-30 absolute top-14 left-5" />
               <div className="flex w-full   px-14 justify-end pb-5  h-[50%] items-center">
                 <b className="font-bold text-2xl">{adminOrders.length}</b>
               </div>
-            </div>
-            <div className="flex flex-col items-center lg:w-[16rem] lg:h-[9rem] w-[12rem] h-[8rem] shadow-sm rounded-3xl bg-orange-500 relative">
+            </Link>
+            <Link
+              to="/admin/users"
+              className="flex flex-col items-center lg:w-[16rem] lg:h-[9rem] w-[12rem] h-[8rem] shadow-sm rounded-3xl bg-orange-500 relative"
+            >
               <h2 className=" text-xl font-bold py-4">Users</h2>
               <FaUsers className="text-[3.5rem] opacity-30 absolute top-14 left-5" />
               <div className="flex w-full   px-14 justify-end pb-5  h-[50%] items-center">
                 <b className="font-bold text-2xl">{users.length}</b>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
         <div className="lg:flex px-2 lg:px-0">

@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 const Products = ({ product }) => {
   return (
     <div>
-      <section className="  box-border overflow-hidden whitespace-nowrap w-[11rem] md:w-[12rem] lg:w-[14rem] my-1 lg:my-3 flex flex-col items-center gap-1 lg:gap-3">
-        <div className="lg:w-[14rem] w-[12rem] bg-white h-[15rem] lg:h-[16rem] flex items-center justify-center">
+      <section className="  box-border overflow-hidden whitespace-nowrap w-[10rem] md:w-[12rem] lg:w-[13rem] lg:h-[16rem] my-1 lg:my-3 flex flex-col items-center gap-1 lg:gap-3 bg-white rounded-md shadow-sm">
+        <div className="lg:w-[12rem] w-[10rem] bg-white flex items-center justify-center lg:h-[14rem] h-[10rem]">
           <img
-            className="lg:w-[9rem] w-[9rem]"
+            className="lg:w-[9rem] w-[6rem]"
             src={product.images[0].image}
             alt={product.name}
           />

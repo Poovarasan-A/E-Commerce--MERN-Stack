@@ -68,9 +68,11 @@ const Home = () => {
             </h2>
             <div className="w-full h-full flex flex-wrap justify-center gap-5 bg-neutral-200 bg-opacity-70 items-center pt-2">
               {products &&
-                products.map((product) => (
-                  <Products key={product._id} product={product} />
-                ))}
+                products
+                  .slice(0, 24)
+                  .map((product) => (
+                    <Products key={product._id} product={product} />
+                  ))}
             </div>
           </div>
         </>

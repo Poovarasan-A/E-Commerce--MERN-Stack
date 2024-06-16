@@ -113,7 +113,7 @@ const Navbar = () => {
       ) : (
         <button
           type="submit"
-          className="bg-slate-800 text-white w-[6rem] h-[2.2rem] px-3 py-1 rounded-3xl lg:flex hidden"
+          className="bg-slate-800 text-white h-[2.2rem] px-5 py-1 rounded-3xl lg:flex hidden"
         >
           <Link to="/login">Login</Link>
         </button>

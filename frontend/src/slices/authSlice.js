@@ -28,6 +28,12 @@ const authSlice = createSlice({
         error: action.payload,
       };
     },
+    clearLoginErr(state, action) {
+      return {
+        ...state,
+        error: null,
+      };
+    },
     //Create new user
     registerRequest(state, action) {
       return {
@@ -187,6 +193,7 @@ export const {
   loginRequest,
   loginSuccess,
   loginFail,
+  clearLoginErr,
   registerRequest,
   registerSuccess,
   registerFail,

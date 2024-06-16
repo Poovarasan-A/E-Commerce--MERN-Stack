@@ -105,7 +105,7 @@ const CategoryTab = () => {
         </div>
         <div
           className="flex-col bg-neutral-200 bg-opacity-70 w-[30%] h-[23%] flex items-center justify-center lg:gap-0 gap-3 lg:py-2 lg:rounded-sm cursor-pointer"
-          onClick={() => handleCategoryClick("Toys & Baby")}
+          onClick={() => handleCategoryClick("Toys")}
         >
           <MdToys className="text-3xl lg:text-xl" />
           <p className="lg:text-sm">Toys & Baby</p>
