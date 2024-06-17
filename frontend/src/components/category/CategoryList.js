@@ -27,12 +27,12 @@ const CategoryList = () => {
       ) : (
         <>
           <MetaData title={"Products"} />
-          <div className=" my-2 lg:pt-[4rem] py-[4rem] w-full min-h-screen flex box-border bg-neutral-200 bg-opacity-70 overflow-x-hidden ">
-            <div className="lg:w-[80%] w-full">
+          <div className=" my-2 pt-[4rem] h-screen  w-full flex box-border bg-neutral-200 bg-opacity-70 overflow-x-hidden">
+            <div className="lg:w-[80%]">
               <h2 className="font-bold text-2xl ml-10 my-4">
                 Products ({count})
               </h2>
-              <div className="w-full h-full ml-5 flex flex-wrap gap-5 ">
+              <div className="w-full lg:h-full ml-5 flex flex-wrap gap-5 ">
                 {products &&
                   products.map((product) => (
                     <Products key={product._id} product={product} />

@@ -66,10 +66,10 @@ const Home = () => {
             <h2 className="font-bold text-2xl my-3 pl-6 lg:pl-0">
               Explore Products
             </h2>
-            <div className="w-full h-full flex flex-wrap justify-center gap-5 bg-neutral-200 bg-opacity-70 items-center pt-2">
+            <div className="w-full h-full flex flex-wrap justify-center gap-5 xl:gap-7  bg-neutral-200 bg-opacity-70 items-center pt-2">
               {products &&
                 products
-                  .slice(0, 24)
+                  .slice(0, 28)
                   .map((product) => (
                     <Products key={product._id} product={product} />
                   ))}
