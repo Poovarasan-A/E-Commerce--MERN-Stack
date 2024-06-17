@@ -109,7 +109,7 @@ const ProductDetails = () => {
       <div className="w-full lg:h-screen lg:flex pt-[4rem] bg-white">
         <div className="w-full lg:w-[40%] flex items-center bg-neutral-200 bg-opacity-70 justify-center ">
           <Carousel
-            className="w-[31rem] h-[40rem] bg-white flex flex-col pt-[2rem]"
+            className="w-full h-[40rem] bg-white flex flex-col pt-[2rem]"
             dynamicHeight
           >
             {product.images &&
