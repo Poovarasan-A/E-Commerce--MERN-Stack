@@ -107,9 +107,9 @@ const ProductDetails = () => {
       <MetaData title={product.name} />
 
       <div className="w-full lg:h-screen lg:flex pt-[4rem] bg-white">
-        <div className="w-full lg:w-[40%] flex items-center bg-neutral-200 bg-opacity-70 justify-center ">
+        <div className="w-full lg:w-[40%] flex items-centerbg-neutral-200 bg-opacity-70 justify-center px-2 lg:px-0">
           <Carousel
-            className="w-full h-[40rem] bg-white flex flex-col pt-[2rem]"
+            className="lg:w-[31rem]  bg-white flex flex-col pt-[2rem]"
             dynamicHeight
           >
             {product.images &&
@@ -121,8 +121,10 @@ const ProductDetails = () => {
           </Carousel>
         </div>
 
-        <div className="w-full lg:w-[42%] bg-white lg:px-10 px-4 lg:pt-8">
-          <h5 className="text-3xl font-bold my-5">{product.name}</h5>
+        <div className="w-full lg:w-[42%] bg-white px-10 pt-8">
+          <h5 className="lg:text-3xl text-2xl font-bold my-5">
+            {product.name}
+          </h5>
           <p className="text-md">{product.description}</p>
           <p className="text-2xl font-semibold my-5">Rs.{product.price}</p>
           <div className="flex items-center gap-3">
