@@ -34,5 +34,5 @@ Redux Toolkit is used for efficient state management across the application. It 
 ## Payment Processing
 Stripe is integrated for handling payments. Users can add products to the cart and proceed to checkout where they can pay using their credit/debit cards via Stripe.
 
-##Contributing
+## Contributing
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
