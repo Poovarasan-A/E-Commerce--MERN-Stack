@@ -1,3 +1,6 @@
+# As this project is deployed in free version please wait minimum 1 min to load the website at initial, sorry for inconvenience
+ - For admin login - Email : admin@gmail.com and password: admin
+
 # E-Commerce Platform
 ## Overview
 This is a full-fledged e-commerce application developed using the MERN stack (MongoDB, Express.js, React.js, Node.js). The application includes an admin dashboard for managing products, orders, and users, as well as user authentication using JWT tokens. Redux Toolkit is used for state management, and Stripe is integrated as the payment gateway.
