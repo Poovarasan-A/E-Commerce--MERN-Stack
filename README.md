@@ -1,4 +1,4 @@
-# As this project is deployed in free version please wait minimum 1 min to load the website at initial, sorry for inconvenience
+## As this project is deployed in free version please wait minimum 1 min to load the website at initial, sorry for inconvenience
  - For admin login - Email : admin@gmail.com and password: admin
 
 # E-Commerce Platform
